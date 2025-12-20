@@ -1,6 +1,6 @@
-NVTOP
+AMDTOP
 =====
-
+(This project is forked from the NVTOP from Syllo which provide most of the component.)
 What is NVTOP?
 --------------
 
@@ -19,30 +19,17 @@ Because a picture is worth a thousand words:
 Table of Contents
 -----------------
 
+It has to be pointed out that the modified version had and only had tested on AMD GPU with following models: Radeon Pro W7900, Radeon RX7900XTX and Radeon RX590. Other models of cards hadn't been tested, if you had met any issues, feel free to leave at the _Issues_.
+
 - [NVTOP Options and Interactive Commands](#nvtop-options-and-interactive-commands)
   - [Interactive Setup Window](#interactive-setup-window)
   - [Saving Preferences](#saving-preferences)
   - [NVTOP Manual and Command line Options](#nvtop-manual-and-command-line-options)
 - [GPU Support](#gpu-support)
   - [AMD](#amd)
-  - [Intel](#intel)
-  - [NVIDIA](#nvidia)
-  - [Adreno](#adreno)
-  - [Apple](#apple)
-  - [Ascend](#ascend) (only tested on 910B)
-  - [VideoCore](#videocore)
 - [Build](#build)
 - [Distribution Specific Installation Process](#distribution-specific-installation-process)
-  - [Ubuntu / Debian](#ubuntu--debian)
-    - [Ubuntu Impish (21.10) / Debian buster (stable) and more recent (stable)](#ubuntu-impish-2110-debian-buster-stable-and-more-recent)
-  - [Fedora / Red Hat / CentOS](#fedora--red-hat--centos)
-  - [OpenSUSE](#opensuse)
-  - [Arch Linux](#arch-linux)
-  - [Gentoo](#gentoo)
-  - [AppImage](#appimage)
-  - [Snap](#snap)
-  - [Conda-forge](#conda-forge)
-  - [Docker](#docker)
+  - Unlike the offical package, here you might only git from source and compile it yourself, a detailed instruction would be given in the following session. Or you might refer to the offical [NVTOP Build](#nvtop-build), which should be the same.
 - [NVTOP Build](#nvtop-build)
 - [Troubleshoot](#troubleshoot)
 - [License](#license)
@@ -61,19 +48,18 @@ Simply press ``F2`` and select the options that are the best for you.
 You can save the preferences set in the setup window by pressing ``F12``.
 The preferences will be loaded the next time you run ``nvtop``.
 
-### NVTOP Manual and Command line Options
+### AMDTOP Manual and Command line Options
 
-NVTOP comes with a manpage!
+AMDTOP comes with a manpage!
 ```bash
 man nvtop
 ```
 For quick command line arguments help
 ```bash
-nvtop -h
-nvtop --help
+amdtop -h
+amdtop --help
 ```
-
-GPU Support
+⚠️A system linkage or systemtical path should be modified or added to make sure it could be call out with such command.
 -----------
 
 ### AMD
@@ -88,67 +74,6 @@ processes using AMD GPUs.
 
 Support for recent GPUs are regularly mainlined into the linux kernel, so please
 use a recent-enough kernel for your GPU.
-
-### Intel
-
-NVTOP supports Intel GPUs using the `i915` or `xe` linux driver.
-
-Intel introduced the fdinfo interface in kernel 5.19 ([browse kernel
-source](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/gpu/drm/i915/i915_drm_client.c?h=linux-5.19.y)).
-Hence, you will need a kernel with a version greater or equal to 5.19 to see the
-processes using Intel GPUs.
-
-Intel requires CAP_PERFMON or CAP_SYS_ADMIN capabilities to access the total memory usage,
-you can run `sudo setcap cap_perfmon=ep nvtop` to grant the necessary permissions or run nvtop as root.
-
-### NVIDIA
-
-The *NVML library* does not support some of the queries for GPUs coming before the
-Kepler microarchitecture. Anything starting at GeForce 600, GeForce 800M and
-successor should work fine. For more information about supported GPUs please
-take a look at the [NVML documentation](http://docs.nvidia.com/deploy/nvml-api/nvml-api-reference.html#nvml-api-reference).
-
-### Adreno
-
-NVTOP supports Adreno GPUs using the `msm` linux driver.
-
-msm introduced the fdinfo interface in kernel 6.0 ([browse kernel
-source](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/gpu/drm/msm/msm_drv.c?h=linux-6.0.y)).
-Hence, you will need a kernel with a version greater or equal to 6.0 to see the
-processes using Adreno GPUs.
-
-### Apple
-
-NVTOP includes some initial support for Apple using Metal. This is only supported when building for Apple, and when building for Apple only this vendor is supported.
-
-**APPLE SUPPORT STATUS**
-- Apple support is still being worked on. Some bugs and limitations may apply.
-
-### Ascend
-
-NVTOP supports Ascend (testing on Altas 800 (910B)) by DCMI API (version 6.0.0).
-
-Currently, the DCMI only supports limited APIs, missing PCIe generation, tx/rx throughput info, max power draw etc.
-
-### VideoCore
-
-NVTOP supports VideoCore (testing on raspberrypi 4B).
-
-Supports GPU frequency, temperature, utilization, per-process utilization, GPU memory usage, and H264 decoding utilization.
-
-On non-raspberry pi os, you need to use the `linux-rpi 6.12.y` kernel and above, and ensure the presence of the `/dev/vcio` device.
-
-### Rockchip
-
-NVTOP supports Rockchip (testing on orangepi 5 plus).
-
-Supports NPU frequency, temperature, utilization.
-
-### MetaX
-
-NVTOP supports MetaX (testing on MXC500) by MXSML LIBRARY.
-
-For more information about GPUs please take a look at the [METAX documentation](https://developer.metax-tech.com/doc/index)
 
 Build
 -----
