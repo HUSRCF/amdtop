@@ -70,7 +70,7 @@ static void alloc_device_window(unsigned int start_row, unsigned int start_col, 
   if (dwin->pcie_info == NULL)
     goto alloc_error;
 
-  // Line 2 = GPU clk | MEM clk | Temp | Fan | Power
+  // Line 2 = EDGE | JUNC | MEMT | Fan | Power
   dwin->gpu_clock_info = newwin(1, sizeof_device_field[device_clock], start_row + 1, start_col);
   if (dwin->gpu_clock_info == NULL)
     goto alloc_error;
@@ -493,14 +493,15 @@ static void draw_percentage_meter(WINDOW *win, const char *prelude, unsigned int
 
 static const char *memory_prefix[] = {" B", "Ki", "Mi", "Gi", "Ti", "Pi"};
 
-static void draw_temp_color(WINDOW *win, unsigned int temp, unsigned int temp_slowdown, bool celsius) {
+static void draw_temp_color(WINDOW *win, const char *label, unsigned int temp, unsigned int temp_slowdown,
+                            bool celsius) {
   unsigned int temp_convert;
   if (celsius)
     temp_convert = temp;
   else
     temp_convert = (unsigned)(32 + nearbyint(temp * 1.8));
   wcolor_set(win, cyan_color, NULL);
-  mvwprintw(win, 0, 0, "TEMP");
+  mvwprintw(win, 0, 0, "%s", label);
 
   if (temp >= temp_slowdown - 5) {
     if (temp >= temp_slowdown)
@@ -518,6 +519,17 @@ static void draw_temp_color(WINDOW *win, unsigned int temp, unsigned int temp_sl
     waddch(win, 'C');
   else
     waddch(win, 'F');
+  wnoutrefresh(win);
+}
+
+static void draw_temp_na(WINDOW *win, const char *label, bool celsius) {
+  mvwprintw(win, 0, 0, "%s N/A", label);
+  waddch(win, ACS_DEGREE);
+  if (celsius)
+    waddch(win, 'C');
+  else
+    waddch(win, 'F');
+  mvwchgat(win, 0, 0, (int)strlen(label), 0, cyan_color, NULL);
   wnoutrefresh(win);
 }
 
@@ -716,22 +728,35 @@ static void draw_devices(struct list_head *devices, struct nvtop_interface *inte
       snprintf(buff, 1024, "N/A");
       draw_percentage_meter(mem_util_win, "MEM", 0, buff);
     }
-    if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, gpu_temp)) {
-      if (!GPUINFO_STATIC_FIELD_VALID(&device->static_info, temperature_slowdown_threshold))
-        device->static_info.temperature_slowdown_threshold = 0;
-      draw_temp_color(dev->temperature, device->dynamic_info.gpu_temp,
+    if (!GPUINFO_STATIC_FIELD_VALID(&device->static_info, temperature_slowdown_threshold))
+      device->static_info.temperature_slowdown_threshold = 0;
+
+    // EDGE
+    werase(dev->gpu_clock_info);
+    if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, gpu_temp))
+      draw_temp_color(dev->gpu_clock_info, "EDGE", device->dynamic_info.gpu_temp,
                       device->static_info.temperature_slowdown_threshold,
                       !interface->options.temperature_in_fahrenheit);
-    } else {
-      mvwprintw(dev->temperature, 0, 0, "TEMP N/A");
-      waddch(dev->temperature, ACS_DEGREE);
-      if (interface->options.temperature_in_fahrenheit)
-        waddch(dev->temperature, 'F');
-      else
-        waddch(dev->temperature, 'C');
-      mvwchgat(dev->temperature, 0, 0, 4, 0, cyan_color, NULL);
-      wnoutrefresh(dev->temperature);
-    }
+    else
+      draw_temp_na(dev->gpu_clock_info, "EDGE", !interface->options.temperature_in_fahrenheit);
+
+    // JUNC
+    werase(dev->mem_clock_info);
+    if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, gpu_temp_junction))
+      draw_temp_color(dev->mem_clock_info, "JUNC", device->dynamic_info.gpu_temp_junction,
+                      device->static_info.temperature_slowdown_threshold,
+                      !interface->options.temperature_in_fahrenheit);
+    else
+      draw_temp_na(dev->mem_clock_info, "JUNC", !interface->options.temperature_in_fahrenheit);
+
+    // MEMT
+    werase(dev->temperature);
+    if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, gpu_temp_mem))
+      draw_temp_color(dev->temperature, "MEMT", device->dynamic_info.gpu_temp_mem,
+                      device->static_info.temperature_slowdown_threshold,
+                      !interface->options.temperature_in_fahrenheit);
+    else
+      draw_temp_na(dev->temperature, "MEMT", !interface->options.temperature_in_fahrenheit);
 
     // FAN
     if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, fan_speed)) {
@@ -750,25 +775,6 @@ static void draw_devices(struct list_head *devices, struct nvtop_interface *inte
       mvwchgat(dev->fan_speed, 0, 2, 3, 0, cyan_color, NULL);
     }
     wnoutrefresh(dev->fan_speed);
-
-    // GPU CLOCK
-    werase(dev->gpu_clock_info);
-    if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, gpu_clock_speed))
-      mvwprintw(dev->gpu_clock_info, 0, 0, "GPU %uMHz", device->dynamic_info.gpu_clock_speed);
-    else
-      mvwprintw(dev->gpu_clock_info, 0, 0, "GPU N/A MHz");
-
-    mvwchgat(dev->gpu_clock_info, 0, 0, 3, 0, cyan_color, NULL);
-    wnoutrefresh(dev->gpu_clock_info);
-
-    // MEM CLOCK
-    werase(dev->mem_clock_info);
-    if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, mem_clock_speed))
-      mvwprintw(dev->mem_clock_info, 0, 0, "MEM %uMHz", device->dynamic_info.mem_clock_speed);
-    else
-      mvwprintw(dev->mem_clock_info, 0, 0, "MEM N/A MHz");
-    mvwchgat(dev->mem_clock_info, 0, 0, 3, 0, cyan_color, NULL);
-    wnoutrefresh(dev->mem_clock_info);
 
     // POWER
     werase(dev->power_info);
@@ -806,19 +812,19 @@ static void draw_devices(struct list_head *devices, struct nvtop_interface *inte
     }
 
     wcolor_set(dev->pcie_info, magenta_color, NULL);
-    wprintw(dev->pcie_info, " RX: ");
+    wprintw(dev->pcie_info, " GPU ");
     wstandend(dev->pcie_info);
-    if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, pcie_rx))
-      print_pcie_at_scale(dev->pcie_info, device->dynamic_info.pcie_rx);
+    if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, gpu_clock_speed))
+      wprintw(dev->pcie_info, "%uMHz", device->dynamic_info.gpu_clock_speed);
     else
-      wprintw(dev->pcie_info, "N/A");
+      wprintw(dev->pcie_info, "N/A MHz");
     wcolor_set(dev->pcie_info, magenta_color, NULL);
-    wprintw(dev->pcie_info, " TX: ");
+    wprintw(dev->pcie_info, " MEM ");
     wstandend(dev->pcie_info);
-    if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, pcie_tx))
-      print_pcie_at_scale(dev->pcie_info, device->dynamic_info.pcie_tx);
+    if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, mem_clock_speed))
+      wprintw(dev->pcie_info, "%uMHz", device->dynamic_info.mem_clock_speed);
     else
-      wprintw(dev->pcie_info, "N/A");
+      wprintw(dev->pcie_info, "N/A MHz");
 
     wnoutrefresh(dev->pcie_info);
 

@@ -90,6 +90,25 @@ endif()
 if (AMDGPU_SUPPORT)
   target_sources(nvtop PRIVATE extract_gpuinfo_amdgpu.c)
   target_sources(nvtop PRIVATE extract_gpuinfo_amdgpu_utils.c)
+
+  if (ROCM_SMI_SUPPORT)
+    find_path(ROCM_SMI_INCLUDE_DIR
+      NAMES rocm_smi/rocm_smi.h
+      PATHS /opt/rocm /opt/rocm-7.1.0
+      PATH_SUFFIXES include)
+    find_library(ROCM_SMI_LIBRARY
+      NAMES rocm_smi64 librocm_smi64
+      PATHS /opt/rocm/lib /opt/rocm/lib64 /opt/rocm-7.1.0/lib /opt/rocm-7.1.0/lib64)
+
+    if (ROCM_SMI_INCLUDE_DIR AND ROCM_SMI_LIBRARY)
+      target_sources(nvtop PRIVATE rocm_smi_utils.c)
+      target_include_directories(nvtop PRIVATE ${ROCM_SMI_INCLUDE_DIR})
+      target_link_libraries(nvtop PRIVATE ${ROCM_SMI_LIBRARY})
+      target_compile_definitions(nvtop PRIVATE HAVE_ROCM_SMI)
+    else()
+      message(WARNING "ROCm SMI not found; AMD metrics will use libdrm/sysfs only")
+    endif()
+  endif()
 endif()
 
 if (MSM_SUPPORT)

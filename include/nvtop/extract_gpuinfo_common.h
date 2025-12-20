@@ -101,6 +101,8 @@ enum gpuinfo_dynamic_info_valid {
   gpuinfo_fan_speed_valid,
   gpuinfo_fan_rpm_valid,
   gpuinfo_gpu_temp_valid,
+  gpuinfo_gpu_temp_junction_valid,
+  gpuinfo_gpu_temp_mem_valid,
   gpuinfo_power_draw_valid,
   gpuinfo_power_draw_max_valid,
   gpuinfo_multi_instance_mode_valid,
@@ -126,6 +128,8 @@ struct gpuinfo_dynamic_info {
   unsigned int fan_speed;           // Fan speed percentage
   unsigned int fan_rpm;             // Fan speed RPM
   unsigned int gpu_temp;            // GPU temperature °celsius
+  unsigned int gpu_temp_junction;   // GPU junction temperature °celsius
+  unsigned int gpu_temp_mem;        // GPU memory temperature °celsius
   unsigned int power_draw;          // Power usage in milliwatts
   unsigned int power_draw_max;      // Max power usage in milliwatts
   bool multi_instance_mode;          // True if the GPU is in multi-instance mode
