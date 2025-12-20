@@ -16,6 +16,23 @@ Because a picture is worth a thousand words:
 
 ![NVTOP interface](/screenshot/NVTOP_ex1.png)
 
+🌟KEY Improvement & Why choosing AMDTOP?
+---------------
+
+Original nvtop do qutie well with nvidia card. However, some important feature like junction temperature and VRAM temperature hadn't been provided, while the RX and TX is not usable for AMD cards, which has been abondoned in newly-released AMD drive version. Moreover, the pcie monitor could had problem since amd drive's feedback information is not correct. The most accurate and reliable way is to check the systemtical information. Two pictures are shown below to compare the difference on amd gpu.
+⚠️For better monitor on pcie, a sudo is needed, or else it would fall back to traitional fetching method like nvtop, which could provide misleading information.
+
+<div align="center"> 
+  
+  <h2>Comparsion between NVTOP and AMDTOP</h2>
+  <img src="/screenshot/NVTOP.png" width="2000" />
+  <p>NVTOP: Whose RX/TX is not usable on AMD GPU, and incorrect pcie information.</p>
+  <img src="/screenshot/AMDTOP.png" width="2000" />
+  <p>AMDTOP: Correct Pcie info, with regulate feature to better fit the needs of AMD GPU.</p>
+  
+</div>
+
+
 Table of Contents
 -----------------
 
