@@ -76,7 +76,7 @@ static const char helpstring[] = "Available options:\n"
                                  "  -s --snapshot     : Output the current gpu stats without ncurses"
                                  "(useful for scripting)\n";
 
-static const char versionString[] = "nvtop version " NVTOP_VERSION_STRING;
+static const char versionString[] = "amdtop version " NVTOP_VERSION_STRING;
 
 static const struct option long_opts[] = {
     {.name = "delay", .has_arg = required_argument, .flag = NULL, .val = 'd'},

@@ -29,8 +29,8 @@ It has to be pointed out that the modified version had and only had tested on AM
   - [AMD](#amd)
 - [Build](#build)
 - [Distribution Specific Installation Process](#distribution-specific-installation-process)
-  - Unlike the offical package, here you might only git from source and compile it yourself, a detailed instruction would be given in the following session. Or you might refer to the offical [NVTOP Build](#nvtop-build), which should be the same.
-- [NVTOP Build](#nvtop-build)
+  - Unlike the offical package, here you might only git from source and compile it yourself, a detailed instruction would be given in the following session. Or you might refer to the offical [AMDTOP Build](#amdtop-build), which should be the same.
+- [AMDTOP Build](#amdtop-build)
 - [Troubleshoot](#troubleshoot)
 - [License](#license)
 
@@ -46,20 +46,23 @@ Simply press ``F2`` and select the options that are the best for you.
 ### Saving Preferences
 
 You can save the preferences set in the setup window by pressing ``F12``.
-The preferences will be loaded the next time you run ``nvtop``.
+The preferences will be loaded the next time you run ``amdtop``.
 
 ### AMDTOP Manual and Command line Options
 
 AMDTOP comes with a manpage!
 ```bash
-man nvtop
+man amdtop
 ```
 For quick command line arguments help
 ```bash
 amdtop -h
 amdtop --help
+amdtop -v
+amdtop --version
 ```
 ⚠️A system linkage or systemtical path should be modified or added to make sure it could be call out with such command.
+⚠️Some GPU metrics (PCIe, per-process usage, temperatures) are read from ROCm SMI and kernel sysfs/debugfs, which may require elevated privileges; if you see N/A values, rerun with `sudo amdtop`.
 -----------
 
 ### AMD
@@ -95,17 +98,14 @@ Several libraries are required in order for NVTOP to display GPU info:
 
 ```bash
 git clone https://github.com/HUSRCF/amdtop.git
-mkdir -p amdtop/build && cd amdtop/build
-cmake .. -DNVIDIA_SUPPORT=ON -DAMDGPU_SUPPORT=ON -DINTEL_SUPPORT=ON
-make
+cmake -S amdtop -B amdtop/build -DAMDGPU_SUPPORT=ON -DROCM_SMI_SUPPORT=ON -DNVIDIA_SUPPORT=OFF -DINTEL_SUPPORT=OFF
+cmake --build amdtop/build -j
 
 # Install globally on the system
-sudo make install
+sudo cmake --install amdtop/build
 
 # Alternatively, install without privileges at a location of your choosing
-# cmake .. -DNVIDIA_SUPPORT=ON -DAMDGPU_SUPPORT=ON -DINTEL_SUPPORT=ON -DCMAKE_INSTALL_PREFIX=/path/to/your/dir
-# make
-# make install
+# cmake --install amdtop/build --prefix /path/to/your/dir
 ```
 
 If you use **conda** as environment manager and encounter an error while building NVTOP, try `conda deactivate` before invoking `cmake`.

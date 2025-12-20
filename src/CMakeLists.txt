@@ -5,7 +5,7 @@ configure_file(
   "${PROJECT_BINARY_DIR}/include/nvtop/version.h"
   IMMEDIATE @ONLY)
 
-add_executable(nvtop
+add_executable(amdtop
   nvtop.c
   interface.c
   interface_layout_selection.c
@@ -31,7 +31,7 @@ check_c_source_compiles(
 )
 
 if(HAS_REALLOCARRAY)
-  target_compile_definitions(nvtop PRIVATE HAS_REALLOCARRAY)
+  target_compile_definitions(amdtop PRIVATE HAS_REALLOCARRAY)
 endif()
 
 find_package(UDev)
@@ -39,39 +39,39 @@ find_package(Systemd)
 option(USE_LIBUDEV_OVER_LIBSYSTEMD "Use libudev, even if libsystemd is present" OFF)
 
 if(UNIX AND NOT APPLE)
-  target_sources(nvtop PRIVATE
+  target_sources(amdtop PRIVATE
     get_process_info_linux.c
     extract_processinfo_fdinfo.c
     info_messages_linux.c)
 elseif(APPLE)
-  target_sources(nvtop PRIVATE
+  target_sources(amdtop PRIVATE
     get_process_info_mac.c
     extract_processinfo_mac.c
     info_messages_mac.c)
 endif()
 
 if(NVIDIA_SUPPORT)
-  target_sources(nvtop PRIVATE extract_gpuinfo_nvidia.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_nvidia.c)
 endif()
 
 if(ASCEND_SUPPORT)
-  target_sources(nvtop PRIVATE extract_gpuinfo_ascend.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_ascend.c)
   set(DCMI_LIBRARY_PATH /usr/local/Ascend/driver/lib64/driver)
-  target_link_libraries(nvtop PRIVATE "${DCMI_LIBRARY_PATH}/libdcmi.so")
+  target_link_libraries(amdtop PRIVATE "${DCMI_LIBRARY_PATH}/libdcmi.so")
 endif()
 
 if(AMDGPU_SUPPORT OR INTEL_SUPPORT OR V3D_SUPPORT)
   if((SYSTEMD_FOUND AND UDEV_FOUND AND USE_LIBUDEV_OVER_LIBSYSTEMD) OR(NOT SYSTEMD_FOUND AND UDEV_FOUND))
-    target_compile_definitions(nvtop PRIVATE USING_LIBUDEV)
-    target_link_libraries(nvtop PRIVATE udev)
+    target_compile_definitions(amdtop PRIVATE USING_LIBUDEV)
+    target_link_libraries(amdtop PRIVATE udev)
   elseif(SYSTEMD_FOUND)
-    target_compile_definitions(nvtop PRIVATE USING_LIBSYSTEMD)
-    target_link_libraries(nvtop PRIVATE systemd)
+    target_compile_definitions(amdtop PRIVATE USING_LIBSYSTEMD)
+    target_link_libraries(amdtop PRIVATE systemd)
   else()
     message(FATAL_ERROR "Neither libsystemd nor libudev were found; These are required for AMDGPU, INTEL and V3D support")
   endif()
 
-  target_sources(nvtop PRIVATE device_discovery_linux.c)
+  target_sources(amdtop PRIVATE device_discovery_linux.c)
 endif()
 
 if(AMDGPU_SUPPORT OR INTEL_SUPPORT OR MSM_SUPPORT OR PANFROST_SUPPORT OR PANTHOR_SUPPORT)
@@ -80,7 +80,7 @@ if(AMDGPU_SUPPORT OR INTEL_SUPPORT OR MSM_SUPPORT OR PANFROST_SUPPORT OR PANTHOR
 
   if(Libdrm_FOUND)
     message(STATUS "Found libdrm; Enabling support")
-    target_include_directories(nvtop PRIVATE ${Libdrm_INCLUDE_DIRS})
+    target_include_directories(amdtop PRIVATE ${Libdrm_INCLUDE_DIRS})
   else()
     message(FATAL_ERROR "libdrm not found; This library is required for AMDGPU, INTEL, MSM, PANFROST and PANTHOR support")
     # CMake will exit if libdrm is not found
@@ -88,8 +88,8 @@ if(AMDGPU_SUPPORT OR INTEL_SUPPORT OR MSM_SUPPORT OR PANFROST_SUPPORT OR PANTHOR
 endif()
 
 if (AMDGPU_SUPPORT)
-  target_sources(nvtop PRIVATE extract_gpuinfo_amdgpu.c)
-  target_sources(nvtop PRIVATE extract_gpuinfo_amdgpu_utils.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_amdgpu.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_amdgpu_utils.c)
 
   if (ROCM_SMI_SUPPORT)
     find_path(ROCM_SMI_INCLUDE_DIR
@@ -101,10 +101,10 @@ if (AMDGPU_SUPPORT)
       PATHS /opt/rocm/lib /opt/rocm/lib64 /opt/rocm-7.1.0/lib /opt/rocm-7.1.0/lib64)
 
     if (ROCM_SMI_INCLUDE_DIR AND ROCM_SMI_LIBRARY)
-      target_sources(nvtop PRIVATE rocm_smi_utils.c)
-      target_include_directories(nvtop PRIVATE ${ROCM_SMI_INCLUDE_DIR})
-      target_link_libraries(nvtop PRIVATE ${ROCM_SMI_LIBRARY})
-      target_compile_definitions(nvtop PRIVATE HAVE_ROCM_SMI)
+      target_sources(amdtop PRIVATE rocm_smi_utils.c)
+      target_include_directories(amdtop PRIVATE ${ROCM_SMI_INCLUDE_DIR})
+      target_link_libraries(amdtop PRIVATE ${ROCM_SMI_LIBRARY})
+      target_compile_definitions(amdtop PRIVATE HAVE_ROCM_SMI)
     else()
       message(WARNING "ROCm SMI not found; AMD metrics will use libdrm/sysfs only")
     endif()
@@ -112,24 +112,24 @@ if (AMDGPU_SUPPORT)
 endif()
 
 if (MSM_SUPPORT)
-  target_sources(nvtop PRIVATE extract_gpuinfo_msm.c)
-  target_sources(nvtop PRIVATE extract_gpuinfo_msm_utils.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_msm.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_msm_utils.c)
 endif()
 
 if(INTEL_SUPPORT)
-  target_sources(nvtop PRIVATE extract_gpuinfo_intel.c)
-  target_sources(nvtop PRIVATE extract_gpuinfo_intel_i915.c)
-  target_sources(nvtop PRIVATE extract_gpuinfo_intel_xe.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_intel.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_intel_i915.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_intel_xe.c)
 endif()
 
 if(V3D_SUPPORT)
-  target_sources(nvtop PRIVATE extract_gpuinfo_v3d.c)
-  target_sources(nvtop PRIVATE extract_gpuinfo_v3d_utils.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_v3d.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_v3d_utils.c)
 endif()
 
 if(APPLE_SUPPORT)
-  target_sources(nvtop PRIVATE extract_gpuinfo_apple.m)
-  target_link_libraries(nvtop PRIVATE
+  target_sources(amdtop PRIVATE extract_gpuinfo_apple.m)
+  target_link_libraries(amdtop PRIVATE
     "-framework Metal"
     "-framework AppKit"
     "-framework Foundation"
@@ -138,17 +138,17 @@ if(APPLE_SUPPORT)
 endif()
 
 if (PANFROST_SUPPORT)
-  target_sources(nvtop PRIVATE extract_gpuinfo_panfrost.c)
-  target_sources(nvtop PRIVATE extract_gpuinfo_panfrost_utils.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_panfrost.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_panfrost_utils.c)
 endif()
 
 if (PANTHOR_SUPPORT)
-  target_sources(nvtop PRIVATE extract_gpuinfo_panthor.c)
-  target_sources(nvtop PRIVATE extract_gpuinfo_panthor_utils.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_panthor.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_panthor_utils.c)
 endif()
 
 if ((PANFROST_SUPPORT) OR (PANTHOR_SUPPORT))
-  target_sources(nvtop PRIVATE extract_gpuinfo_mali_common.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_mali_common.c)
 endif()
 
 if(TPU_SUPPORT)
@@ -161,39 +161,39 @@ if(TPU_SUPPORT)
     message(WARNING "TPU Support enabled, but libtpuinfo.so not found in ldconfig path, we will not be able to read TPU usage")
     set(TPU_SUPPORT_DEFAULT OFF)
   endif()
-  target_sources(nvtop PRIVATE extract_gpuinfo_tpu.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_tpu.c)
 endif()
 
 if(ROCKCHIP_SUPPORT)
   message(STATUS "Building with Rockchip NPU support")
 
-  target_sources(nvtop PRIVATE extract_npuinfo_rockchip.c)
+  target_sources(amdtop PRIVATE extract_npuinfo_rockchip.c)
 endif()
 
 if(METAX_SUPPORT)
-  target_sources(nvtop PRIVATE extract_gpuinfo_metax.c)
+  target_sources(amdtop PRIVATE extract_gpuinfo_metax.c)
 endif()
 
-target_include_directories(nvtop PRIVATE
+target_include_directories(amdtop PRIVATE
   ${PROJECT_SOURCE_DIR}/include
   ${PROJECT_BINARY_DIR}/include)
 
 find_package(Sanitizers)
 
-add_sanitizers(nvtop)
+add_sanitizers(amdtop)
 
-set_property(TARGET nvtop PROPERTY C_STANDARD 11)
+set_property(TARGET amdtop PROPERTY C_STANDARD 11)
 
-target_compile_definitions(nvtop PRIVATE _GNU_SOURCE)
+target_compile_definitions(amdtop PRIVATE _GNU_SOURCE)
 
-target_link_libraries(nvtop
+target_link_libraries(amdtop
   PRIVATE ncurses m ${CMAKE_DL_LIBS})
 
-install(TARGETS nvtop
+install(TARGETS amdtop
   RUNTIME DESTINATION bin)
 
 include(compile-flags-helpers)
 include(${PROJECT_SOURCE_DIR}/cmake/optimization_flags.cmake)
 
-add_compiler_option_to_target_type(nvtop Debug PRIVATE ${ADDITIONAL_DEBUG_COMPILE_OPTIONS})
-add_linker_option_to_all_but_target_type(nvtop dummy PRIVATE ${ADDITIONAL_RELEASE_LINK_OPTIONS})
+add_compiler_option_to_target_type(amdtop Debug PRIVATE ${ADDITIONAL_DEBUG_COMPILE_OPTIONS})
+add_linker_option_to_all_but_target_type(amdtop dummy PRIVATE ${ADDITIONAL_RELEASE_LINK_OPTIONS})
