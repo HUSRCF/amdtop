@@ -94,8 +94,8 @@ Several libraries are required in order for NVTOP to display GPU info:
 ## AMDTOP Build
 
 ```bash
-git clone https://github.com/Syllo/nvtop.git
-mkdir -p nvtop/build && cd nvtop/build
+git clone https://github.com/HUSRCF/amdtop.git
+mkdir -p amdtop/build && cd amdtop/build
 cmake .. -DNVIDIA_SUPPORT=ON -DAMDGPU_SUPPORT=ON -DINTEL_SUPPORT=ON
 make
 
@@ -127,6 +127,7 @@ Troubleshoot
 License
 -------
 
+AMDTOP is forked from NVTOP and thus inheritage the original GPLv3 license, which require a complusory open-source which you shoud pay attention to.
 NVTOP is licensed under the GPLv3 license or any later version.
 You will find a copy of the license inside the COPYING file of the repository or
 at the GNU website <[www.gnu.org/licenses/](http://www.gnu.org/licenses/)>.
