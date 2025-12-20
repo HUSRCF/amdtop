@@ -27,6 +27,7 @@
 #include "nvtop/extract_gpuinfo_common.h"
 #include "nvtop/extract_processinfo_fdinfo.h"
 #include "nvtop/time.h"
+#include "nvtop/rocm_smi_utils.h"
 
 #include <assert.h>
 #include <dirent.h>
@@ -41,6 +42,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/syscall.h>
@@ -125,6 +127,14 @@ struct gpu_info_amdgpu {
 
   nvtop_device *amdgpuDevice; // The AMDGPU driver device
   nvtop_device *hwmonDevice;  // The AMDGPU driver hwmon device
+
+  int rsmi_dev_index;
+  bool rsmi_available;
+
+  nvtop_time last_lspci_update;
+  bool lspci_cache_valid;
+  unsigned lspci_pcie_gen;
+  unsigned lspci_pcie_width;
 
   struct amdgpu_process_info_cache *last_update_process_cache, *current_update_process_cache; // Cached processes info
 
@@ -223,6 +233,8 @@ static bool gpuinfo_amdgpu_init(void) {
     _amdgpu_query_sensor_info = dlsym(libdrm_amdgpu_handle, "amdgpu_query_sensor_info");
   }
 
+  nvtop_rocm_smi_init();
+
   local_error_string = NULL;
   return true;
 
@@ -266,6 +278,8 @@ static void gpuinfo_amdgpu_shutdown(void) {
     dlclose(libdrm_amdgpu_handle);
     libdrm_amdgpu_handle = NULL;
   }
+
+  nvtop_rocm_smi_shutdown();
 }
 
 static const char *gpuinfo_amdgpu_last_error_string(void) {
@@ -463,6 +477,20 @@ static bool gpuinfo_amdgpu_get_device_handles(struct list_head *devices, unsigne
       snprintf(gpu_infos[amdgpu_count].base.pdev, PDEV_LEN - 1, "%04x:%02x:%02x.%d", devs[i]->businfo.pci->domain,
                devs[i]->businfo.pci->bus, devs[i]->businfo.pci->dev, devs[i]->businfo.pci->func);
       initDeviceSysfsPaths(&gpu_infos[amdgpu_count]);
+
+      gpu_infos[amdgpu_count].rsmi_dev_index = -1;
+      gpu_infos[amdgpu_count].rsmi_available = false;
+      if (nvtop_rocm_smi_is_available()) {
+        uint32_t rsmi_index = 0;
+        if (nvtop_rocm_smi_find_device(gpu_infos[amdgpu_count].base.pdev, &rsmi_index)) {
+          gpu_infos[amdgpu_count].rsmi_dev_index = (int)rsmi_index;
+          gpu_infos[amdgpu_count].rsmi_available = true;
+        }
+      }
+      gpu_infos[amdgpu_count].lspci_cache_valid = false;
+      gpu_infos[amdgpu_count].lspci_pcie_gen = 0;
+      gpu_infos[amdgpu_count].lspci_pcie_width = 0;
+      gpu_infos[amdgpu_count].last_lspci_update = (nvtop_time){0, 0};
       list_add_tail(&gpu_infos[amdgpu_count].base.list, devices);
       // Register a fdinfo callback for this GPU
       processinfo_register_fdinfo_callback(parse_drm_fdinfo_amd, &gpu_infos[amdgpu_count].base);
@@ -507,16 +535,115 @@ static int readAttributeFromDevice(nvtop_device *dev, const char *sysAttr, const
   return nread;
 }
 
+static unsigned pcie_speed_from_gt(double gt) {
+  if (gt >= 63.0)
+    return 64;
+  if (gt >= 31.0)
+    return 32;
+  if (gt >= 15.0)
+    return 16;
+  if (gt >= 7.0)
+    return 8;
+  if (gt >= 4.0)
+    return 5;
+  if (gt >= 2.0)
+    return 2;
+  return 0;
+}
+
+static bool parse_lspci_link_line(const char *line, unsigned *gen, unsigned *width) {
+  const char *speed_pos = strstr(line, "Speed ");
+  const char *width_pos = strstr(line, "Width x");
+  if (!speed_pos || !width_pos)
+    return false;
+
+  speed_pos += strlen("Speed ");
+  char *endptr = NULL;
+  double gt = strtod(speed_pos, &endptr);
+  if (endptr == speed_pos)
+    return false;
+
+  width_pos += strlen("Width x");
+  unsigned w = strtoul(width_pos, &endptr, 10);
+  if (endptr == width_pos || w == 0)
+    return false;
+
+  unsigned speed = pcie_speed_from_gt(gt);
+  unsigned g = nvtop_pcie_gen_from_link_speed(speed);
+  if (g == 0)
+    return false;
+
+  *gen = g;
+  *width = w;
+  return true;
+}
+
+static bool query_lspci_link(const char *pdev, unsigned *gen, unsigned *width) {
+  char cmd[128];
+  snprintf(cmd, sizeof(cmd), "lspci -vv -s %s 2>/dev/null", pdev);
+  FILE *fp = popen(cmd, "r");
+  if (!fp)
+    return false;
+
+  char line[512];
+  bool found_cap = false;
+  unsigned cap_gen = 0, cap_width = 0;
+  while (fgets(line, sizeof(line), fp)) {
+    if (strstr(line, "LnkSta:")) {
+      if (parse_lspci_link_line(line, gen, width)) {
+        pclose(fp);
+        return true;
+      }
+    }
+    if (!found_cap && strstr(line, "LnkCap:")) {
+      if (parse_lspci_link_line(line, &cap_gen, &cap_width)) {
+        found_cap = true;
+      }
+    }
+  }
+
+  pclose(fp);
+  if (found_cap) {
+    *gen = cap_gen;
+    *width = cap_width;
+    return true;
+  }
+  return false;
+}
+
+static bool update_lspci_cache(struct gpu_info_amdgpu *gpu_info) {
+  nvtop_time now;
+  nvtop_get_current_time(&now);
+  if (gpu_info->lspci_cache_valid && nvtop_difftime(gpu_info->last_lspci_update, now) < 5.0)
+    return true;
+
+  unsigned gen = 0, width = 0;
+  if (!query_lspci_link(gpu_info->base.pdev, &gen, &width))
+    return false;
+
+  gpu_info->lspci_pcie_gen = gen;
+  gpu_info->lspci_pcie_width = width;
+  gpu_info->last_lspci_update = now;
+  gpu_info->lspci_cache_valid = true;
+  return true;
+}
+
 static void gpuinfo_amdgpu_populate_static_info(struct gpu_info *_gpu_info) {
   struct gpu_info_amdgpu *gpu_info = container_of(_gpu_info, struct gpu_info_amdgpu, base);
   struct gpuinfo_static_info *static_info = &gpu_info->base.static_info;
   bool info_query_success = false;
   struct amdgpu_gpu_info info;
   const char *name = NULL;
+  char rsmi_name[MAX_DEVICE_NAME];
 
   static_info->integrated_graphics = false;
   static_info->encode_decode_shared = false;
   RESET_ALL(static_info->valid);
+
+  if (gpu_info->rsmi_available &&
+      nvtop_rocm_smi_device_name((uint32_t)gpu_info->rsmi_dev_index, rsmi_name, sizeof(rsmi_name))) {
+    name = rsmi_name;
+  }
 
   if (libdrm_amdgpu_handle && _amdgpu_get_marketing_name)
     name = _amdgpu_get_marketing_name(gpu_info->amdgpu_device);
@@ -781,6 +908,15 @@ static void gpuinfo_amdgpu_refresh_dynamic_info(struct gpu_info *_gpu_info) {
     if (NreadPatterns == 1) {
       SET_GPUINFO_DYNAMIC(dynamic_info, power_draw_max, powerCap / 1000);
     }
+  }
+
+  if (gpu_info->rsmi_available && gpu_info->rsmi_dev_index >= 0) {
+    nvtop_rocm_smi_refresh_dynamic((uint32_t)gpu_info->rsmi_dev_index, dynamic_info);
+  }
+
+  if (update_lspci_cache(gpu_info)) {
+    SET_GPUINFO_DYNAMIC(dynamic_info, pcie_link_gen, gpu_info->lspci_pcie_gen);
+    SET_GPUINFO_DYNAMIC(dynamic_info, pcie_link_width, gpu_info->lspci_pcie_width);
   }
 }
 
