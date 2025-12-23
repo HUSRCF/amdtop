@@ -110,6 +110,13 @@ Several libraries are required in order for NVTOP to display GPU info:
 
 ## Distribution Specific Installation Process
 
+### By Snapcraft
+
+```bash
+sudo snap install amdtop
+```
+
+### Other distribution is under development and coming soon...
 
 ## AMDTOP Build
 
