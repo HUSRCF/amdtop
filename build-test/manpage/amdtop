@@ -1,7 +1,7 @@
 .\" Manpage for amdtop
 .\" Contact maxime.schmitt91@gmail.com
 
-.TH amdtop 1 "March 2026" "Version 1.1.1" "amdtop command"
+.TH amdtop 1 "March 2026" "Version 1.1.2" "amdtop command"
 
 .SH NAME
 amdtop \- interactive GPU process viewer

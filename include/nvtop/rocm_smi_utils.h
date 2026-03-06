@@ -16,4 +16,7 @@ bool nvtop_rocm_smi_device_name(uint32_t index, char *name, size_t name_len);
 
 void nvtop_rocm_smi_refresh_dynamic(uint32_t index, struct gpuinfo_dynamic_info *dynamic_info);
 
+// 新增：进程信息获取函数
+bool nvtop_rocm_smi_get_processes(struct gpu_info *gpu_info);
+
 #endif // NVTOP_ROCM_SMI_UTILS_H

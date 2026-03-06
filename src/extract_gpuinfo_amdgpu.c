@@ -1161,8 +1161,26 @@ static void swap_process_cache_for_next_update(struct gpu_info_amdgpu *gpu_info)
 }
 
 static void gpuinfo_amdgpu_get_running_processes(struct gpu_info *_gpu_info) {
+  struct gpu_info_amdgpu *gpu_info = container_of(_gpu_info, struct gpu_info_amdgpu, base);
+
+  // 优先使用 ROCm SMI 获取进程信息
+  #ifdef HAVE_ROCM_SMI
+  fprintf(stderr, "DEBUG: rsmi_available=%d, nvtop_rocm_smi_is_available()=%d\n",
+          gpu_info->rsmi_available, nvtop_rocm_smi_is_available());
+  if (gpu_info->rsmi_available && nvtop_rocm_smi_is_available()) {
+    fprintf(stderr, "DEBUG: Calling nvtop_rocm_smi_get_processes\n");
+    if (nvtop_rocm_smi_get_processes(&gpu_info->base)) {
+      fprintf(stderr, "DEBUG: ROCm SMI get_processes succeeded\n");
+      // ROCm SMI 成功获取进程信息
+      return;
+    }
+    fprintf(stderr, "DEBUG: ROCm SMI get_processes failed, falling back to fdinfo\n");
+  }
+  #endif
+
+  // 回退到 fdinfo 方式（保持兼容性）
   // For AMDGPU, we register a fdinfo callback that will fill the gpu_process datastructure of the gpu_info structure
   // for us. This avoids going through /proc multiple times per update for multiple GPUs.
-  struct gpu_info_amdgpu *gpu_info = container_of(_gpu_info, struct gpu_info_amdgpu, base);
+  fprintf(stderr, "DEBUG: Using fdinfo fallback\n");
   swap_process_cache_for_next_update(gpu_info);
 }

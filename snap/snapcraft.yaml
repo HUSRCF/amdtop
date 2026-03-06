@@ -1,6 +1,6 @@
 name: amdtop
 base: core22
-version: '1.1.1'
+version: '1.1.2'
 summary: AMD GPU monitoring tool with efficiency metrics
 description: |
   A robust task monitor for AMD GPUs with advanced efficiency metrics.
@@ -19,7 +19,7 @@ issues: https://github.com/HUSRCF/amdtop/issues
 donation: https://github.com/HUSRCF/amdtop
 
 grade: stable
-confinement: classic
+confinement: strict
 
 apps:
   amdtop:

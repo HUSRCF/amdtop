@@ -3335,6 +3335,7 @@ src/CMakeFiles/amdtop.dir/rocm_smi_utils.c.o: /home/husrcf/Code/AMDTOP/src/rocm_
   /home/husrcf/Code/AMDTOP/include/nvtop/rocm_smi_utils.h \
   /opt/rocm/include/rocm_smi/kfd_ioctl.h \
   /opt/rocm/include/rocm_smi/rocm_smi.h \
+  /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/int-ll64.h \
   /usr/include/asm-generic/ioctl.h \
@@ -3355,6 +3356,7 @@ src/CMakeFiles/amdtop.dir/rocm_smi_utils.c.o: /home/husrcf/Code/AMDTOP/src/rocm_
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
   /usr/include/stdio.h \
+  /usr/include/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
   /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
@@ -3395,6 +3397,9 @@ src/CMakeFiles/amdtop.dir/rocm_smi_utils.c.o: /home/husrcf/Code/AMDTOP/src/rocm_
   /usr/include/x86_64-linux-gnu/bits/stdio2-decl.h \
   /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
@@ -3423,6 +3428,8 @@ src/CMakeFiles/amdtop.dir/rocm_smi_utils.c.o: /home/husrcf/Code/AMDTOP/src/rocm_
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
   /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
