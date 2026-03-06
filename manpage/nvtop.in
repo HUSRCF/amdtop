@@ -97,6 +97,16 @@ Quit.
 .TP
 When the video encoder (ENC) and decoder (DEC) of the GPU are in use, new percentage meters will appear next to the GPU utilization bar. They will disappear automatically after some time of inactivity (see option -E).
 
+.SH GPU EFFICIENCY METRIC
+.TP
+AMDTOP displays an \fBefficiency (eff)\fR metric alongside the standard GPU utilization rate when power draw information is available. This metric provides a more accurate representation of actual GPU workload:
+.TP
+.B Efficiency = GPU Utilization × (Current Power / Maximum Power)
+.TP
+The efficiency metric is displayed in yellow within the GPU utilization bar. For example, a GPU showing 55% utilization while drawing 65% of its maximum power has an effective load of 36%. This helps identify scenarios where the GPU reports high utilization but is actually running at reduced power/performance levels.
+.TP
+If power metrics are not supported by your GPU or driver, only the standard utilization percentage will be shown.
+
 .SH CONFIGURATION FILE
 .LP
 The configuration file follows the \fIXDG Base Directory Specification\fR and is stored at \fI$XDG_CONFIG_HOME/nvtop/interface.ini\fR. The location defaults to \fI$HOME/.config/nvtop/interface.ini\fR if the XDG location is not defined. This keeps compatibility with nvtop.

@@ -53,6 +53,21 @@ It has to be pointed out that the modified version had and only had tested on AM
 
 NVTOP Options and Interactive Commands
 --------------------------------------
+### GPU Efficiency Metric
+
+AMDTOP displays an **efficiency (eff)** metric alongside the standard GPU utilization rate. This provides a more accurate representation of actual GPU workload by factoring in power consumption:
+
+```
+GPU[|||||||||||||||55%(eff 36%)] MEM[||||||||||42.359Gi/44.984Gi]
+```
+
+- **GPU utilization (green)**: Raw GPU usage percentage (55% in example)
+- **Efficiency (yellow)**: Effective load = GPU utilization × (current power / max power)
+
+The efficiency metric helps identify when a GPU reports high utilization but is actually running at reduced power/performance levels. For example, a GPU showing 55% utilization while drawing only 65% of its maximum power has an effective load of 36%.
+
+**Note**: The efficiency metric requires both GPU utilization and power draw information to be available. If power metrics are not supported by your GPU or driver, only the standard utilization will be shown.
+
 ### Interactive Setup Window
 
 NVTOP has a builtin setup utility that provides a way to specialize the interface to your needs.
@@ -80,6 +95,51 @@ amdtop --version
 ```
 ⚠️A system linkage or systemtical path should be modified or added to make sure it could be call out with such command.
 ⚠️Some GPU metrics (PCIe, per-process usage, temperatures) are read from ROCm SMI and kernel sysfs/debugfs, which may require elevated privileges; if you see N/A values, rerun with `sudo amdtop`.
+
+### Snap Installation and Permissions
+
+If you installed AMDTOP via snap, you may need to configure permissions for GPU monitoring:
+
+#### Quick Setup (Recommended)
+```bash
+sudo amdtop --init
+```
+
+This interactive command will:
+1. Check if you're running in a snap environment
+2. Explain what permissions are needed
+3. Ask for confirmation
+4. Automatically connect all required snap interfaces
+
+#### Manual Setup
+If you prefer to connect interfaces manually:
+```bash
+sudo snap connect amdtop:hardware-observe
+sudo snap connect amdtop:system-observe
+sudo snap connect amdtop:mount-observe
+sudo snap connect amdtop:process-control
+```
+
+#### Why are these permissions needed?
+
+Snap uses strict confinement for security, which prevents applications from accessing hardware by default. AMDTOP requires these interfaces to:
+- **hardware-observe**: Read GPU hardware information
+- **system-observe**: Monitor system processes and memory
+- **mount-observe**: Access device mount points
+- **process-control**: Manage GPU processes
+
+#### Troubleshooting "No GPU to monitor"
+
+If AMDTOP shows "No GPU to monitor" but you have an AMD GPU:
+
+1. **For snap installations**: Run `sudo amdtop --init` to configure permissions
+2. **For system installations**:
+   - Check if drivers are installed: `lsmod | grep amdgpu`
+   - Install drivers if needed: `sudo apt install amdgpu-dkms`
+   - Try with sudo: `sudo amdtop`
+
+AMDTOP will automatically detect your situation and provide specific guidance.
+
 -----------
 
 ### AMD

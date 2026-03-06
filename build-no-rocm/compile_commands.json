@@ -1,0 +1,158 @@
+[
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/nvtop.c.o -c /home/husrcf/Code/AMDTOP/src/nvtop.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/nvtop.c",
+  "output": "src/CMakeFiles/amdtop.dir/nvtop.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/interface.c.o -c /home/husrcf/Code/AMDTOP/src/interface.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/interface.c",
+  "output": "src/CMakeFiles/amdtop.dir/interface.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/interface_layout_selection.c.o -c /home/husrcf/Code/AMDTOP/src/interface_layout_selection.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/interface_layout_selection.c",
+  "output": "src/CMakeFiles/amdtop.dir/interface_layout_selection.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/interface_options.c.o -c /home/husrcf/Code/AMDTOP/src/interface_options.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/interface_options.c",
+  "output": "src/CMakeFiles/amdtop.dir/interface_options.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/interface_setup_win.c.o -c /home/husrcf/Code/AMDTOP/src/interface_setup_win.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/interface_setup_win.c",
+  "output": "src/CMakeFiles/amdtop.dir/interface_setup_win.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/interface_ring_buffer.c.o -c /home/husrcf/Code/AMDTOP/src/interface_ring_buffer.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/interface_ring_buffer.c",
+  "output": "src/CMakeFiles/amdtop.dir/interface_ring_buffer.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/time.c.o -c /home/husrcf/Code/AMDTOP/src/time.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/time.c",
+  "output": "src/CMakeFiles/amdtop.dir/time.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/plot.c.o -c /home/husrcf/Code/AMDTOP/src/plot.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/plot.c",
+  "output": "src/CMakeFiles/amdtop.dir/plot.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/ini.c.o -c /home/husrcf/Code/AMDTOP/src/ini.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/ini.c",
+  "output": "src/CMakeFiles/amdtop.dir/ini.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/get_process_info_linux.c.o -c /home/husrcf/Code/AMDTOP/src/get_process_info_linux.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/get_process_info_linux.c",
+  "output": "src/CMakeFiles/amdtop.dir/get_process_info_linux.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_processinfo_fdinfo.c.o -c /home/husrcf/Code/AMDTOP/src/extract_processinfo_fdinfo.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_processinfo_fdinfo.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_processinfo_fdinfo.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/info_messages_linux.c.o -c /home/husrcf/Code/AMDTOP/src/info_messages_linux.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/info_messages_linux.c",
+  "output": "src/CMakeFiles/amdtop.dir/info_messages_linux.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/device_discovery_linux.c.o -c /home/husrcf/Code/AMDTOP/src/device_discovery_linux.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/device_discovery_linux.c",
+  "output": "src/CMakeFiles/amdtop.dir/device_discovery_linux.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_amdgpu.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_amdgpu.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_amdgpu.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_amdgpu.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_amdgpu_utils.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_amdgpu_utils.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_amdgpu_utils.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_amdgpu_utils.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_msm.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_msm.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_msm.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_msm.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_msm_utils.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_msm_utils.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_msm_utils.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_msm_utils.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_v3d.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_v3d.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_v3d.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_v3d.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_v3d_utils.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_v3d_utils.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_v3d_utils.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_v3d_utils.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_panfrost.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_panfrost.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_panfrost.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_panfrost.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_panfrost_utils.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_panfrost_utils.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_panfrost_utils.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_panfrost_utils.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_panthor.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_panthor.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_panthor.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_panthor.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_panthor_utils.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_panthor_utils.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_panthor_utils.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_panthor_utils.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_mali_common.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_mali_common.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_mali_common.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_mali_common.c.o"
+},
+{
+  "directory": "/home/husrcf/Code/AMDTOP/build-no-rocm/src",
+  "command": "/usr/bin/cc -DHAS_REALLOCARRAY -DNCURSES_ENABLE_STDBOOL_H=1 -DUSING_LIBSYSTEMD -D_GNU_SOURCE -I/usr/include/libdrm -I/home/husrcf/Code/AMDTOP/include -I/home/husrcf/Code/AMDTOP/build-no-rocm/include -O3 -DNDEBUG -std=gnu11 -o CMakeFiles/amdtop.dir/extract_gpuinfo_metax.c.o -c /home/husrcf/Code/AMDTOP/src/extract_gpuinfo_metax.c",
+  "file": "/home/husrcf/Code/AMDTOP/src/extract_gpuinfo_metax.c",
+  "output": "src/CMakeFiles/amdtop.dir/extract_gpuinfo_metax.c.o"
+}
+]

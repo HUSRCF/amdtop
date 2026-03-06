@@ -57,6 +57,61 @@ static void cont_handler(int signum) {
   signal_cont_received = 1;
 }
 
+// Check if AMD/ATI GPU hardware exists using lspci
+static bool check_amd_gpu_hardware_exists(void) {
+  FILE *fp = popen("lspci 2>/dev/null | grep -iE 'VGA|3D|Display.*AMD|ATI'", "r");
+  if (!fp)
+    return false;
+
+  char line[256];
+  bool found = false;
+  if (fgets(line, sizeof(line), fp) != NULL) {
+    found = true;
+  }
+  pclose(fp);
+  return found;
+}
+
+// Check if running in snap environment
+static bool is_running_in_snap(void) {
+  const char *snap_name = getenv("SNAP_NAME");
+  return (snap_name != NULL && strcmp(snap_name, "amdtop") == 0);
+}
+
+// Print diagnostic information when no GPU is detected
+static void print_no_gpu_diagnostic(void) {
+  fprintf(stdout, "No GPU to monitor.\n\n");
+
+  // Check if AMD GPU hardware exists
+  if (check_amd_gpu_hardware_exists()) {
+    fprintf(stdout, "⚠ AMD/ATI GPU hardware detected but not accessible!\n\n");
+
+    if (is_running_in_snap()) {
+      fprintf(stdout, "This is likely a snap permission issue.\n");
+      fprintf(stdout, "Snap's strict confinement prevents access to hardware by default.\n\n");
+      fprintf(stdout, "To fix this, run:\n");
+      fprintf(stdout, "  sudo amdtop --init\n\n");
+      fprintf(stdout, "Or manually connect the required interfaces:\n");
+      fprintf(stdout, "  sudo snap connect amdtop:hardware-observe\n");
+      fprintf(stdout, "  sudo snap connect amdtop:system-observe\n");
+      fprintf(stdout, "  sudo snap connect amdtop:mount-observe\n");
+      fprintf(stdout, "  sudo snap connect amdtop:process-control\n\n");
+    } else {
+      fprintf(stdout, "Possible reasons:\n");
+      fprintf(stdout, "  1. GPU drivers not installed (amdgpu, radeon)\n");
+      fprintf(stdout, "     Install: sudo apt install amdgpu-dkms\n");
+      fprintf(stdout, "  2. Insufficient permissions\n");
+      fprintf(stdout, "     Try: sudo amdtop\n");
+      fprintf(stdout, "  3. Driver not loaded\n");
+      fprintf(stdout, "     Check: lsmod | grep amdgpu\n");
+      fprintf(stdout, "     Load: sudo modprobe amdgpu\n\n");
+    }
+  } else {
+    fprintf(stdout, "No AMD/ATI GPU hardware detected on this system.\n");
+    fprintf(stdout, "Run 'lspci | grep -i vga' to see available graphics devices.\n\n");
+  }
+}
+
 static const char helpstring[] = "Available options:\n"
                                  "  -d --delay        : Select the refresh rate (1 == 0.1s)\n"
                                  "  -v --version      : Print the version and exit\n"
@@ -74,7 +129,8 @@ static const char helpstring[] = "Available options:\n"
                                  "(default 30s, negative = always on screen)\n"
                                  "  -h --help         : Print help and exit\n"
                                  "  -s --snapshot     : Output the current gpu stats without ncurses"
-                                 "(useful for scripting)\n";
+                                 "(useful for scripting)\n"
+                                 "      --init        : Configure snap permissions for GPU monitoring (requires sudo)\n";
 
 static const char versionString[] = "amdtop version " NVTOP_VERSION_STRING;
 
@@ -92,6 +148,7 @@ static const struct option long_opts[] = {
     {.name = "no-processes", .has_arg = no_argument, .flag = NULL, .val = 'P'},
     {.name = "reverse-abs", .has_arg = no_argument, .flag = NULL, .val = 'r'},
     {.name = "snapshot", .has_arg = no_argument, .flag = NULL, .val = 's'},
+    {.name = "init", .has_arg = no_argument, .flag = NULL, .val = 'I'},
     {0, 0, 0, 0},
 };
 
@@ -174,6 +231,68 @@ int main(int argc, char **argv) {
     case 's':
       show_snapshot = true;
       break;
+    case 'I': {
+      // Handle --init flag
+      if (geteuid() != 0) {
+        fprintf(stderr, "Error: --init requires sudo privileges.\n");
+        fprintf(stderr, "Please run: sudo amdtop --init\n");
+        exit(EXIT_FAILURE);
+      }
+
+      // Check if running in snap environment
+      const char *snap_name = getenv("SNAP_NAME");
+      if (!snap_name || strcmp(snap_name, "amdtop") != 0) {
+        fprintf(stderr, "Info: --init is only needed for snap installations.\n");
+        fprintf(stderr, "Your amdtop appears to be running outside of snap.\n");
+        exit(EXIT_SUCCESS);
+      }
+
+      printf("AMDTOP Snap Permission Setup\n");
+      printf("============================\n\n");
+      printf("This will connect the following snap interfaces for full GPU monitoring:\n");
+      printf("  - hardware-observe : Read hardware information (GPU, CPU, etc.)\n");
+      printf("  - system-observe   : Read system status (processes, memory, etc.)\n");
+      printf("  - mount-observe    : View mount points\n");
+      printf("  - process-control  : Process management permissions\n\n");
+      printf("These permissions are required for AMDTOP to detect and monitor GPUs.\n\n");
+      printf("Do you want to proceed? [y/N]: ");
+
+      char response[10];
+      if (fgets(response, sizeof(response), stdin) == NULL ||
+          (response[0] != 'y' && response[0] != 'Y')) {
+        printf("Cancelled.\n");
+        exit(EXIT_SUCCESS);
+      }
+
+      printf("\nConnecting snap interfaces...\n");
+      const char *interfaces[] = {
+        "hardware-observe",
+        "system-observe",
+        "mount-observe",
+        "process-control"
+      };
+
+      bool all_success = true;
+      for (size_t i = 0; i < sizeof(interfaces) / sizeof(interfaces[0]); i++) {
+        char cmd[256];
+        snprintf(cmd, sizeof(cmd), "snap connect amdtop:%s", interfaces[i]);
+        printf("  Running: %s\n", cmd);
+        int ret = system(cmd);
+        if (ret != 0) {
+          fprintf(stderr, "  Warning: Failed to connect %s (may already be connected)\n", interfaces[i]);
+          all_success = false;
+        }
+      }
+
+      printf("\n");
+      if (all_success) {
+        printf("✓ All interfaces connected successfully!\n");
+      } else {
+        printf("⚠ Some interfaces may have failed (this is normal if already connected).\n");
+      }
+      printf("\nYou can now run 'amdtop' to monitor your GPUs.\n");
+      exit(EXIT_SUCCESS);
+    } break;
     case ':':
     case '?':
       switch (optopt) {
@@ -222,7 +341,7 @@ int main(int argc, char **argv) {
   if (!gpuinfo_init_info_extraction(&allDevCount, &monitoredGpus))
     return EXIT_FAILURE;
   if (allDevCount == 0) {
-    fprintf(stdout, "No GPU to monitor.\n");
+    print_no_gpu_diagnostic();
     return EXIT_SUCCESS;
   }
 

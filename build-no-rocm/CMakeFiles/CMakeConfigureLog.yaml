@@ -1,0 +1,1816 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      The system is: Linux - 6.14.0-37-generic - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/cc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/3.28.3/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/c++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/3.28.3/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GIwxTb"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GIwxTb"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GIwxTb'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6baa6/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_6baa6.dir/build.make CMakeFiles/cmTC_6baa6.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GIwxTb'
+        Building C object CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6baa6.dir/'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_6baa6.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccSWjF0C.s
+        GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-linux-gnu/13/include
+         /usr/local/include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        Compiler executable checksum: 38987c28e967c64056a6454abdef726e
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6baa6.dir/'
+         as -v --64 -o CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o /tmp/ccSWjF0C.s
+        GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_6baa6
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6baa6.dir/link.txt --verbose=1
+        /usr/bin/cc  -v CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o -o cmTC_6baa6 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6baa6' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_6baa6.'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBgd7Vz.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_6baa6 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6baa6' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_6baa6.'
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GIwxTb'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-linux-gnu/13/include]
+          add: [/usr/local/include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/13/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/13/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/lib/gcc/x86_64-linux-gnu/13/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GIwxTb']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6baa6/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_6baa6.dir/build.make CMakeFiles/cmTC_6baa6.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GIwxTb']
+        ignore line: [Building C object CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6baa6.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_6baa6.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccSWjF0C.s]
+        ignore line: [GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 13.3.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.26-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/13/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: 38987c28e967c64056a6454abdef726e]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6baa6.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o /tmp/ccSWjF0C.s]
+        ignore line: [GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_6baa6]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6baa6.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o -o cmTC_6baa6 ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) ]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6baa6' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_6baa6.']
+        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBgd7Vz.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_6baa6 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccBgd7Vz.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-znow] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_6baa6] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..]
+          arg [CMakeFiles/cmTC_6baa6.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13] ==> [/usr/lib/gcc/x86_64-linux-gnu/13]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> [/usr/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/13;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-RoandM"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-RoandM"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-RoandM'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6a3ca/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_6a3ca.dir/build.make CMakeFiles/cmTC_6a3ca.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-RoandM'
+        Building CXX object CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -o CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6a3ca.dir/'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_6a3ca.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccEsU3wl.s
+        GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring duplicate directory "/usr/include/x86_64-linux-gnu/c++/13"
+        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/include/c++/13
+         /usr/include/x86_64-linux-gnu/c++/13
+         /usr/include/c++/13/backward
+         /usr/lib/gcc/x86_64-linux-gnu/13/include
+         /usr/local/include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        Compiler executable checksum: c81c05345ce537099dafd5580045814a
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6a3ca.dir/'
+         as -v --64 -o CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccEsU3wl.s
+        GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_6a3ca
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6a3ca.dir/link.txt --verbose=1
+        /usr/bin/c++  -v CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_6a3ca 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6a3ca' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_6a3ca.'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccyE1Ukq.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_6a3ca /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6a3ca' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_6a3ca.'
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-RoandM'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/include/c++/13]
+          add: [/usr/include/x86_64-linux-gnu/c++/13]
+          add: [/usr/include/c++/13/backward]
+          add: [/usr/lib/gcc/x86_64-linux-gnu/13/include]
+          add: [/usr/local/include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/include/c++/13] ==> [/usr/include/c++/13]
+        collapse include dir [/usr/include/x86_64-linux-gnu/c++/13] ==> [/usr/include/x86_64-linux-gnu/c++/13]
+        collapse include dir [/usr/include/c++/13/backward] ==> [/usr/include/c++/13/backward]
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/13/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/13/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/include/c++/13;/usr/include/x86_64-linux-gnu/c++/13;/usr/include/c++/13/backward;/usr/lib/gcc/x86_64-linux-gnu/13/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-RoandM']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6a3ca/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_6a3ca.dir/build.make CMakeFiles/cmTC_6a3ca.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-RoandM']
+        ignore line: [Building CXX object CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6a3ca.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_6a3ca.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccEsU3wl.s]
+        ignore line: [GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 13.3.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.26-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring duplicate directory "/usr/include/x86_64-linux-gnu/c++/13"]
+        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/include/c++/13]
+        ignore line: [ /usr/include/x86_64-linux-gnu/c++/13]
+        ignore line: [ /usr/include/c++/13/backward]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/13/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: c81c05345ce537099dafd5580045814a]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6a3ca.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccEsU3wl.s]
+        ignore line: [GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_6a3ca]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6a3ca.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/c++  -v CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_6a3ca ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-fG75Ri/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) ]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6a3ca' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_6a3ca.']
+        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccyE1Ukq.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_6a3ca /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccyE1Ukq.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-znow] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_6a3ca] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..]
+          arg [CMakeFiles/cmTC_6a3ca.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13] ==> [/usr/lib/gcc/x86_64-linux-gnu/13]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> [/usr/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/13;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "cmake/modules/FindCurses.cmake:101 (CHECK_LIBRARY_EXISTS)"
+      - "CMakeLists.txt:30 (find_package)"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Lv8dur"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Lv8dur"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "CURSES_CURSES_HAS_WSYNCUP"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Lv8dur'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bb243/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_bb243.dir/build.make CMakeFiles/cmTC_bb243.dir/build
+        gmake[1]: 进入目录“/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Lv8dur”
+        Building C object CMakeFiles/cmTC_bb243.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=wsyncup -o CMakeFiles/cmTC_bb243.dir/CheckFunctionExists.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Lv8dur/CheckFunctionExists.c
+        Linking C executable cmTC_bb243
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb243.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=wsyncup CMakeFiles/cmTC_bb243.dir/CheckFunctionExists.c.o -o cmTC_bb243  -lcurses 
+        gmake[1]: 离开目录“/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Lv8dur”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "cmake/modules/FindCurses.cmake:155 (CHECK_LIBRARY_EXISTS)"
+      - "CMakeLists.txt:30 (find_package)"
+    checks:
+      - "Looking for cbreak in /usr/lib/x86_64-linux-gnu/libncursesw.so"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-MTr8ID"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-MTr8ID"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "CURSES_NCURSES_HAS_CBREAK"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-MTr8ID'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4a725/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_4a725.dir/build.make CMakeFiles/cmTC_4a725.dir/build
+        gmake[1]: 进入目录“/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-MTr8ID”
+        Building C object CMakeFiles/cmTC_4a725.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=cbreak -o CMakeFiles/cmTC_4a725.dir/CheckFunctionExists.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-MTr8ID/CheckFunctionExists.c
+        Linking C executable cmTC_4a725
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4a725.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=cbreak CMakeFiles/cmTC_4a725.dir/CheckFunctionExists.c.o -o cmTC_4a725  -lncursesw 
+        gmake[1]: 离开目录“/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-MTr8ID”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "src/CMakeLists.txt:21 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAS_REALLOCARRAY"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Ovl4IR"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Ovl4IR"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "HAS_REALLOCARRAY"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Ovl4IR'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_98d56/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_98d56.dir/build.make CMakeFiles/cmTC_98d56.dir/build
+        gmake[1]: 进入目录“/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Ovl4IR”
+        Building C object CMakeFiles/cmTC_98d56.dir/src.c.o
+        /usr/bin/cc -DHAS_REALLOCARRAY   -o CMakeFiles/cmTC_98d56.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Ovl4IR/src.c
+        Linking C executable cmTC_98d56
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_98d56.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_98d56.dir/src.c.o -o cmTC_98d56 
+        gmake[1]: 离开目录“/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Ovl4IR”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wall"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GRH0f9"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GRH0f9"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wall"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GRH0f9'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ba5a5/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_ba5a5.dir/build.make CMakeFiles/cmTC_ba5a5.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GRH0f9'
+        Building C object CMakeFiles/cmTC_ba5a5.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wall -Wall -o CMakeFiles/cmTC_ba5a5.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GRH0f9/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_ba5a5
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ba5a5.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_ba5a5.dir/src.c.o -o cmTC_ba5a5 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-GRH0f9'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wextra"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-W8pUGY"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-W8pUGY"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wextra"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-W8pUGY'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e8ae0/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_e8ae0.dir/build.make CMakeFiles/cmTC_e8ae0.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-W8pUGY'
+        Building C object CMakeFiles/cmTC_e8ae0.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wextra -Wextra -o CMakeFiles/cmTC_e8ae0.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-W8pUGY/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_e8ae0
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e8ae0.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_e8ae0.dir/src.c.o -o cmTC_e8ae0 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-W8pUGY'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Waddress"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Dmhulp"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Dmhulp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Waddress"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Dmhulp'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_34132/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_34132.dir/build.make CMakeFiles/cmTC_34132.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Dmhulp'
+        Building C object CMakeFiles/cmTC_34132.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Waddress -Waddress -o CMakeFiles/cmTC_34132.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Dmhulp/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_34132
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_34132.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_34132.dir/src.c.o -o cmTC_34132 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Dmhulp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Waggressive-loop-optimizations"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-3F684T"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-3F684T"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Waggressive-loop-optimizations"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-3F684T'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_01656/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_01656.dir/build.make CMakeFiles/cmTC_01656.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-3F684T'
+        Building C object CMakeFiles/cmTC_01656.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Waggressive-loop-optimizations -Waggressive-loop-optimizations -o CMakeFiles/cmTC_01656.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-3F684T/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_01656
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_01656.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_01656.dir/src.c.o -o cmTC_01656 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-3F684T'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wbad-function-cast"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-UgCqkI"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-UgCqkI"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wbad-function-cast"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-UgCqkI'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_946a8/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_946a8.dir/build.make CMakeFiles/cmTC_946a8.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-UgCqkI'
+        Building C object CMakeFiles/cmTC_946a8.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wbad-function-cast -Wbad-function-cast -o CMakeFiles/cmTC_946a8.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-UgCqkI/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_946a8
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_946a8.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_946a8.dir/src.c.o -o cmTC_946a8 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-UgCqkI'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wmissing-declarations"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-9NcT6o"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-9NcT6o"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wmissing-declarations"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-9NcT6o'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d596d/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_d596d.dir/build.make CMakeFiles/cmTC_d596d.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-9NcT6o'
+        Building C object CMakeFiles/cmTC_d596d.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wmissing-declarations -Wmissing-declarations -o CMakeFiles/cmTC_d596d.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-9NcT6o/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_d596d
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d596d.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_d596d.dir/src.c.o -o cmTC_d596d 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-9NcT6o'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wmissing-parameter-type"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-t0GZwY"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-t0GZwY"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wmissing-parameter-type"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-t0GZwY'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9ed91/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_9ed91.dir/build.make CMakeFiles/cmTC_9ed91.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-t0GZwY'
+        Building C object CMakeFiles/cmTC_9ed91.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wmissing-parameter-type -Wmissing-parameter-type -o CMakeFiles/cmTC_9ed91.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-t0GZwY/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_9ed91
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9ed91.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_9ed91.dir/src.c.o -o cmTC_9ed91 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-t0GZwY'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wmissing-prototypes"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-s7QuqJ"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-s7QuqJ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wmissing-prototypes"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-s7QuqJ'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b879c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b879c.dir/build.make CMakeFiles/cmTC_b879c.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-s7QuqJ'
+        Building C object CMakeFiles/cmTC_b879c.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wmissing-prototypes -Wmissing-prototypes -o CMakeFiles/cmTC_b879c.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-s7QuqJ/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_b879c
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b879c.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_b879c.dir/src.c.o -o cmTC_b879c 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-s7QuqJ'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wnested-externs"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zOtFWB"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zOtFWB"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wnested-externs"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zOtFWB'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_8e24d/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_8e24d.dir/build.make CMakeFiles/cmTC_8e24d.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zOtFWB'
+        Building C object CMakeFiles/cmTC_8e24d.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wnested-externs -Wnested-externs -o CMakeFiles/cmTC_8e24d.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zOtFWB/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_8e24d
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8e24d.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_8e24d.dir/src.c.o -o cmTC_8e24d 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zOtFWB'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wold-style-declaration"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7qsUlY"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7qsUlY"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wold-style-declaration"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7qsUlY'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_aca3b/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_aca3b.dir/build.make CMakeFiles/cmTC_aca3b.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7qsUlY'
+        Building C object CMakeFiles/cmTC_aca3b.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wold-style-declaration -Wold-style-declaration -o CMakeFiles/cmTC_aca3b.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7qsUlY/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_aca3b
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aca3b.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_aca3b.dir/src.c.o -o cmTC_aca3b 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7qsUlY'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wold-style-definition"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YWa7Gc"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YWa7Gc"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wold-style-definition"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YWa7Gc'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4354f/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_4354f.dir/build.make CMakeFiles/cmTC_4354f.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YWa7Gc'
+        Building C object CMakeFiles/cmTC_4354f.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wold-style-definition -Wold-style-definition -o CMakeFiles/cmTC_4354f.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YWa7Gc/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_4354f
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4354f.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_4354f.dir/src.c.o -o cmTC_4354f 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YWa7Gc'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wstrict-prototypes"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WPYqd6"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WPYqd6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wstrict-prototypes"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WPYqd6'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9b3ff/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_9b3ff.dir/build.make CMakeFiles/cmTC_9b3ff.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WPYqd6'
+        Building C object CMakeFiles/cmTC_9b3ff.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wstrict-prototypes -Wstrict-prototypes -o CMakeFiles/cmTC_9b3ff.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WPYqd6/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_9b3ff
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9b3ff.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_9b3ff.dir/src.c.o -o cmTC_9b3ff 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WPYqd6'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wpointer-sign"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-etfgJQ"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-etfgJQ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wpointer-sign"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-etfgJQ'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_550c5/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_550c5.dir/build.make CMakeFiles/cmTC_550c5.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-etfgJQ'
+        Building C object CMakeFiles/cmTC_550c5.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wpointer-sign -Wpointer-sign -o CMakeFiles/cmTC_550c5.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-etfgJQ/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_550c5
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_550c5.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_550c5.dir/src.c.o -o cmTC_550c5 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-etfgJQ'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wdouble-promotion"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-IgaFwr"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-IgaFwr"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wdouble-promotion"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-IgaFwr'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_42578/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_42578.dir/build.make CMakeFiles/cmTC_42578.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-IgaFwr'
+        Building C object CMakeFiles/cmTC_42578.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wdouble-promotion -Wdouble-promotion -o CMakeFiles/cmTC_42578.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-IgaFwr/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_42578
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_42578.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_42578.dir/src.c.o -o cmTC_42578 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-IgaFwr'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wuninitialized"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-fUJw4k"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-fUJw4k"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wuninitialized"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-fUJw4k'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_51172/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_51172.dir/build.make CMakeFiles/cmTC_51172.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-fUJw4k'
+        Building C object CMakeFiles/cmTC_51172.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wuninitialized -Wuninitialized -o CMakeFiles/cmTC_51172.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-fUJw4k/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_51172
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_51172.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_51172.dir/src.c.o -o cmTC_51172 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-fUJw4k'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Winit-self"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gfng9D"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gfng9D"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Winit-self"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gfng9D'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_86cb3/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_86cb3.dir/build.make CMakeFiles/cmTC_86cb3.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gfng9D'
+        Building C object CMakeFiles/cmTC_86cb3.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Winit-self -Winit-self -o CMakeFiles/cmTC_86cb3.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gfng9D/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_86cb3
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_86cb3.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_86cb3.dir/src.c.o -o cmTC_86cb3 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gfng9D'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wstrict-aliasing"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-8XmzPp"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-8XmzPp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wstrict-aliasing"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-8XmzPp'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_49f76/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_49f76.dir/build.make CMakeFiles/cmTC_49f76.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-8XmzPp'
+        Building C object CMakeFiles/cmTC_49f76.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wstrict-aliasing -Wstrict-aliasing -o CMakeFiles/cmTC_49f76.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-8XmzPp/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_49f76
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49f76.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_49f76.dir/src.c.o -o cmTC_49f76 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-8XmzPp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wsuggest-attribute-const"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WMadun"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WMadun"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wsuggest-attribute-const"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WMadun'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e9b77/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_e9b77.dir/build.make CMakeFiles/cmTC_e9b77.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WMadun'
+        Building C object CMakeFiles/cmTC_e9b77.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wsuggest-attribute-const -Wsuggest-attribute=const -o CMakeFiles/cmTC_e9b77.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WMadun/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_e9b77
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9b77.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_e9b77.dir/src.c.o -o cmTC_e9b77 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-WMadun'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wtrampolines"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-JC4JJI"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-JC4JJI"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wtrampolines"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-JC4JJI'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_584ad/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_584ad.dir/build.make CMakeFiles/cmTC_584ad.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-JC4JJI'
+        Building C object CMakeFiles/cmTC_584ad.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wtrampolines -Wtrampolines -o CMakeFiles/cmTC_584ad.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-JC4JJI/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_584ad
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_584ad.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_584ad.dir/src.c.o -o cmTC_584ad 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-JC4JJI'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wfloat-equal"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Xpd9wE"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Xpd9wE"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wfloat-equal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Xpd9wE'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6abd0/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_6abd0.dir/build.make CMakeFiles/cmTC_6abd0.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Xpd9wE'
+        Building C object CMakeFiles/cmTC_6abd0.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wfloat-equal -Wfloat-equal -o CMakeFiles/cmTC_6abd0.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Xpd9wE/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_6abd0
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6abd0.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_6abd0.dir/src.c.o -o cmTC_6abd0 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-Xpd9wE'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wshadow"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gHu2Ik"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gHu2Ik"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wshadow"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gHu2Ik'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_424a8/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_424a8.dir/build.make CMakeFiles/cmTC_424a8.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gHu2Ik'
+        Building C object CMakeFiles/cmTC_424a8.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wshadow -Wshadow -o CMakeFiles/cmTC_424a8.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gHu2Ik/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_424a8
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_424a8.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_424a8.dir/src.c.o -o cmTC_424a8 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-gHu2Ik'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wunsafe-loop-optimizations"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zS4fKH"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zS4fKH"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wunsafe-loop-optimizations"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zS4fKH'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b4ed6/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b4ed6.dir/build.make CMakeFiles/cmTC_b4ed6.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zS4fKH'
+        Building C object CMakeFiles/cmTC_b4ed6.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wunsafe-loop-optimizations -Wunsafe-loop-optimizations -o CMakeFiles/cmTC_b4ed6.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zS4fKH/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_b4ed6
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b4ed6.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_b4ed6.dir/src.c.o -o cmTC_b4ed6 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-zS4fKH'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wfloat-conversion"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YZGcVr"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YZGcVr"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wfloat-conversion"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YZGcVr'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b5886/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b5886.dir/build.make CMakeFiles/cmTC_b5886.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YZGcVr'
+        Building C object CMakeFiles/cmTC_b5886.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wfloat-conversion -Wfloat-conversion -o CMakeFiles/cmTC_b5886.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YZGcVr/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_b5886
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b5886.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_b5886.dir/src.c.o -o cmTC_b5886 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YZGcVr'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wlogical-op"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-N3YJSx"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-N3YJSx"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wlogical-op"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-N3YJSx'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b527e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b527e.dir/build.make CMakeFiles/cmTC_b527e.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-N3YJSx'
+        Building C object CMakeFiles/cmTC_b527e.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wlogical-op -Wlogical-op -o CMakeFiles/cmTC_b527e.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-N3YJSx/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_b527e
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b527e.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_b527e.dir/src.c.o -o cmTC_b527e 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-N3YJSx'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wnormalized"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YKtete"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YKtete"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wnormalized"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YKtete'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_36efb/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_36efb.dir/build.make CMakeFiles/cmTC_36efb.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YKtete'
+        Building C object CMakeFiles/cmTC_36efb.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wnormalized -Wnormalized -o CMakeFiles/cmTC_36efb.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YKtete/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_36efb
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_36efb.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_36efb.dir/src.c.o -o cmTC_36efb 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-YKtete'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wdisabled-optimization"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7sD3wi"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7sD3wi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wdisabled-optimization"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7sD3wi'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e5210/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_e5210.dir/build.make CMakeFiles/cmTC_e5210.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7sD3wi'
+        Building C object CMakeFiles/cmTC_e5210.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wdisabled-optimization -Wdisabled-optimization -o CMakeFiles/cmTC_e5210.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7sD3wi/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_e5210
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e5210.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_e5210.dir/src.c.o -o cmTC_e5210 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-7sD3wi'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Whsa"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-w11Xug"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-w11Xug"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Whsa"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-w11Xug'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4cc68/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_4cc68.dir/build.make CMakeFiles/cmTC_4cc68.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-w11Xug'
+        Building C object CMakeFiles/cmTC_4cc68.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Whsa -Whsa -o CMakeFiles/cmTC_4cc68.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-w11Xug/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_4cc68
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4cc68.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_4cc68.dir/src.c.o -o cmTC_4cc68 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-w11Xug'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wunused-result"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-qtDkMQ"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-qtDkMQ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wunused-result"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-qtDkMQ'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d74a0/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_d74a0.dir/build.make CMakeFiles/cmTC_d74a0.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-qtDkMQ'
+        Building C object CMakeFiles/cmTC_d74a0.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wunused-result -Wunused-result -o CMakeFiles/cmTC_d74a0.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-qtDkMQ/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_d74a0
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d74a0.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_d74a0.dir/src.c.o -o cmTC_d74a0 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-qtDkMQ'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Werror-implicit-function-declaration"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-q2shDV"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-q2shDV"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Werror-implicit-function-declaration"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-q2shDV'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_29a30/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_29a30.dir/build.make CMakeFiles/cmTC_29a30.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-q2shDV'
+        Building C object CMakeFiles/cmTC_29a30.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Werror-implicit-function-declaration -Werror=implicit-function-declaration -o CMakeFiles/cmTC_29a30.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-q2shDV/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_29a30
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_29a30.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_29a30.dir/src.c.o -o cmTC_29a30 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-q2shDV'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wformat"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-XZIYX2"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-XZIYX2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wformat"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-XZIYX2'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_daf1a/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_daf1a.dir/build.make CMakeFiles/cmTC_daf1a.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-XZIYX2'
+        Building C object CMakeFiles/cmTC_daf1a.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wformat -Wformat -o CMakeFiles/cmTC_daf1a.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-XZIYX2/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_daf1a
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_daf1a.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_daf1a.dir/src.c.o -o cmTC_daf1a 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-XZIYX2'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake/compile-flags-helpers.cmake:8 (check_c_compiler_flag)"
+      - "src/CMakeLists.txt:198 (add_compiler_option_to_target_type)"
+    checks:
+      - "Performing Test compiler_has-Wformat-security"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-TP0Ozz"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-TP0Ozz"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "compiler_has-Wformat-security"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-TP0Ozz'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f0e53/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_f0e53.dir/build.make CMakeFiles/cmTC_f0e53.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-TP0Ozz'
+        Building C object CMakeFiles/cmTC_f0e53.dir/src.c.o
+        /usr/bin/cc   -Dcompiler_has-Wformat-security -Wformat-security -o CMakeFiles/cmTC_f0e53.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-TP0Ozz/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_f0e53
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f0e53.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_f0e53.dir/src.c.o -o cmTC_f0e53 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-TP0Ozz'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckLinkerFlag.cmake:37 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckLinkerFlag.cmake:44 (cmake_check_linker_flag)"
+      - "cmake/compile-flags-helpers.cmake:47 (check_linker_flag)"
+      - "src/CMakeLists.txt:199 (add_linker_option_to_all_but_target_type)"
+    checks:
+      - "Performing Test linker_has-Wl_-z_relro"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-KtwMIB"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-KtwMIB"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "linker_has-Wl_-z_relro"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-KtwMIB'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9abc4/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_9abc4.dir/build.make CMakeFiles/cmTC_9abc4.dir/build
+        gmake[1]: Entering directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-KtwMIB'
+        Building C object CMakeFiles/cmTC_9abc4.dir/src.c.o
+        /usr/bin/cc   -Dlinker_has-Wl_-z_relro -o CMakeFiles/cmTC_9abc4.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-KtwMIB/src.c
+        <command-line>: warning: ISO C99 requires whitespace after the macro name
+        Linking C executable cmTC_9abc4
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9abc4.dir/link.txt --verbose=1
+        /usr/bin/cc -Wl,-z,relro CMakeFiles/cmTC_9abc4.dir/src.c.o -o cmTC_9abc4 
+        gmake[1]: Leaving directory '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-KtwMIB'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/usr/share/cmake-3.28/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/home/husrcf/anaconda3/lib/cmake/GTest/GTestConfig.cmake:29 (find_dependency)"
+      - "/usr/share/cmake-3.28/Modules/FindGTest.cmake:194 (find_package)"
+      - "tests/CMakeLists.txt:1 (find_package)"
+    directories:
+      source: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-O7sP3H"
+      binary: "/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-O7sP3H"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/husrcf/Code/AMDTOP/cmake/modules;/home/husrcf/Code/AMDTOP/cmake"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-O7sP3H'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9acfc/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_9acfc.dir/build.make CMakeFiles/cmTC_9acfc.dir/build
+        gmake[1]: 进入目录“/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-O7sP3H”
+        Building C object CMakeFiles/cmTC_9acfc.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_9acfc.dir/src.c.o -c /home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-O7sP3H/src.c
+        Linking C executable cmTC_9acfc
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9acfc.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_9acfc.dir/src.c.o -o cmTC_9acfc 
+        gmake[1]: 离开目录“/home/husrcf/Code/AMDTOP/build-no-rocm/CMakeFiles/CMakeScratch/TryCompile-O7sP3H”
+        
+      exitCode: 0
+...

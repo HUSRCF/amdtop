@@ -233,7 +233,9 @@ static bool gpuinfo_amdgpu_init(void) {
     _amdgpu_query_sensor_info = dlsym(libdrm_amdgpu_handle, "amdgpu_query_sensor_info");
   }
 
+  #ifdef HAVE_ROCM_SMI
   nvtop_rocm_smi_init();
+  #endif
 
   local_error_string = NULL;
   return true;
@@ -279,7 +281,9 @@ static void gpuinfo_amdgpu_shutdown(void) {
     libdrm_amdgpu_handle = NULL;
   }
 
+  #ifdef HAVE_ROCM_SMI
   nvtop_rocm_smi_shutdown();
+  #endif
 }
 
 static const char *gpuinfo_amdgpu_last_error_string(void) {
@@ -397,10 +401,13 @@ static void initDeviceSysfsPaths(struct gpu_info_amdgpu *gpu_info) {
 #define VENDOR_AMD 0x1002
 
 static bool gpuinfo_amdgpu_get_device_handles(struct list_head *devices, unsigned *count) {
-  if (!libdrm_handle)
+  if (!libdrm_handle) {
+    fprintf(stderr, "DEBUG: libdrm_handle is NULL\n");
     return false;
+  }
 
   last_libdrm_return_status = wrap_drmGetDevices(NULL, 0);
+  fprintf(stderr, "DEBUG: drmGetDevices returned %d devices\n", last_libdrm_return_status);
   if (last_libdrm_return_status <= 0)
     return false;
 
@@ -456,6 +463,7 @@ static bool gpuinfo_amdgpu_get_device_handles(struct list_head *devices, unsigne
 
     if (is_amdgpu) {
       if (!libdrm_amdgpu_handle || !_amdgpu_device_initialize) {
+        fprintf(stderr, "DEBUG: libdrm_amdgpu_handle or _amdgpu_device_initialize is NULL\n");
         _drmFreeVersion(ver);
         close(fd);
         continue;
@@ -464,6 +472,7 @@ static bool gpuinfo_amdgpu_get_device_handles(struct list_head *devices, unsigne
       uint32_t drm_major, drm_minor;
       last_libdrm_return_status =
           _amdgpu_device_initialize(fd, &drm_major, &drm_minor, &gpu_infos[amdgpu_count].amdgpu_device);
+      fprintf(stderr, "DEBUG: amdgpu_device_initialize returned: %d (0=success)\n", last_libdrm_return_status);
     } else {
       // TODO: radeon suppport here
       assert(false);
@@ -480,6 +489,7 @@ static bool gpuinfo_amdgpu_get_device_handles(struct list_head *devices, unsigne
 
       gpu_infos[amdgpu_count].rsmi_dev_index = -1;
       gpu_infos[amdgpu_count].rsmi_available = false;
+      #ifdef HAVE_ROCM_SMI
       if (nvtop_rocm_smi_is_available()) {
         uint32_t rsmi_index = 0;
         if (nvtop_rocm_smi_find_device(gpu_infos[amdgpu_count].base.pdev, &rsmi_index)) {
@@ -487,6 +497,7 @@ static bool gpuinfo_amdgpu_get_device_handles(struct list_head *devices, unsigne
           gpu_infos[amdgpu_count].rsmi_available = true;
         }
       }
+      #endif
       gpu_infos[amdgpu_count].lspci_cache_valid = false;
       gpu_infos[amdgpu_count].lspci_pcie_gen = 0;
       gpu_infos[amdgpu_count].lspci_pcie_width = 0;
@@ -640,10 +651,12 @@ static void gpuinfo_amdgpu_populate_static_info(struct gpu_info *_gpu_info) {
   static_info->encode_decode_shared = false;
   RESET_ALL(static_info->valid);
 
+  #ifdef HAVE_ROCM_SMI
   if (gpu_info->rsmi_available &&
       nvtop_rocm_smi_device_name((uint32_t)gpu_info->rsmi_dev_index, rsmi_name, sizeof(rsmi_name))) {
     name = rsmi_name;
   }
+  #endif
 
   if (libdrm_amdgpu_handle && _amdgpu_get_marketing_name)
     name = _amdgpu_get_marketing_name(gpu_info->amdgpu_device);
@@ -910,9 +923,11 @@ static void gpuinfo_amdgpu_refresh_dynamic_info(struct gpu_info *_gpu_info) {
     }
   }
 
+  #ifdef HAVE_ROCM_SMI
   if (gpu_info->rsmi_available && gpu_info->rsmi_dev_index >= 0) {
     nvtop_rocm_smi_refresh_dynamic((uint32_t)gpu_info->rsmi_dev_index, dynamic_info);
   }
+  #endif
 
   if (update_lspci_cache(gpu_info)) {
     SET_GPUINFO_DYNAMIC(dynamic_info, pcie_link_gen, gpu_info->lspci_pcie_gen);

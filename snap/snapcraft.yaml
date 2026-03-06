@@ -1,83 +1,59 @@
-name: nvtop
+name: amdtop
 base: core22
-adopt-info: nvtop
-summary: 'GPUs monitoring tool for AMD, Intel and NVIDIA'
+version: '1.1.1'
+summary: AMD GPU monitoring tool with efficiency metrics
 description: |
-  Nvtop stands for Neat Videocard TOP, a (h)top like task monitor for AMD, Intel and NVIDIA GPUs. It can handle multiple GPUs and print information about them in a htop familiar way.
-license: GPL-3.0-or-later
-issues: https://github.com/Syllo/nvtop/issues
-icon: desktop/nvtop.svg
+  A robust task monitor for AMD GPUs with advanced efficiency metrics.
+  It provides detailed information about GPU utilization, effective load (efficiency),
+  memory usage (VRAM/GTT), temperature, and running processes using specific AMD
+  sysfs interfaces. The efficiency metric combines GPU utilization with power
+  consumption for more accurate workload assessment.
+
+# --- 新增的元数据 (解决 Lint 警告) ---
+title: AMDTOP
+license: GPL-3.0+
+contact: https://github.com/HUSRCF/amdtop/issues
+website: https://github.com/HUSRCF/amdtop
+source-code: https://github.com/HUSRCF/amdtop
+issues: https://github.com/HUSRCF/amdtop/issues
+donation: https://github.com/HUSRCF/amdtop
+
 grade: stable
 confinement: strict
-architectures:
-- build-on: amd64
-- build-on: arm64
-- build-on: armhf
-- build-on: ppc64el
-- build-on: s390x
-compression: lzo
+
 apps:
-  nvtop:
-    command: usr/bin/nvtop
-    desktop: usr/share/applications/nvtop.desktop
+  amdtop:
+    # --- 关键修改：从 bin/amdtop 改为 usr/bin/amdtop ---
+    command: usr/bin/amdtop
     plugs:
-    - opengl
-    - home
-    - hardware-observe
-    - process-control
-    - system-observe
-    # - kubernetes-support # Temporarily required for nvtop to display AMD GPU processes. Once apparmor rule to allow access to @{PROC}/[0-9]*/fdinfo/ is added to system-observe, this can be removed.
-# layout:
-#   /usr/share/libdrm:
-#     symlink: $SNAP/usr/share/libdrm
+      - system-observe
+      - hardware-observe
+      - mount-observe
+      - home
+      - opengl
+      - process-control # 有时杀进程需要这个
+
 parts:
-  libdrm:
-    source: https://gitlab.freedesktop.org/mesa/drm.git
-    source-tag: libdrm-2.4.113
-    plugin: meson
-    meson-parameters:
-    - --prefix=/usr
-    - --sysconfdir=/etc
-    - --libdir=lib/$CRAFT_ARCH_TRIPLET
-    - -Dradeon=enabled
-    - -Damdgpu=enabled
-    - -Dudev=true
-    - -Dnouveau=enabled
-    - -Dintel=enabled
-    build-packages:
-    - meson
-    - pkg-config
-    - libudev-dev
-    - libpciaccess-dev
-    stage-packages:
-    - libpciaccess0
-    prime:
-    - -usr/include
-    - -usr/lib/$CRAFT_ARCH_TRIPLET/pkgconfig
-  nvtop:
-    after: [ libdrm ]
-    source: .
+  amdtop:
     plugin: cmake
+    source: .
+    # 强制指定安装路径为 /usr (确保文件一定在 usr/bin 下)
     cmake-parameters:
-    - -DCMAKE_INSTALL_PREFIX=/usr
-    - -DNVIDIA_SUPPORT=ON
-    - -DAMDGPU_SUPPORT=ON
-    - -DINTEL_SUPPORT=ON
-    override-pull: |
-      set -eux
-      craftctl default
-      VERSION="$(git describe --tags $(git rev-list --tags --max-count=1))"
-      craftctl set version=$VERSION
-      git checkout $VERSION
-    build-snaps:
-    - cmake
+      - -DCMAKE_INSTALL_PREFIX=/usr
+      - -DAMDGPU_SUPPORT=ON
+      - -DNVIDIA_SUPPORT=OFF
+      - -DINTEL_SUPPORT=ON
+      - -DROCM_SMI_SUPPORT=ON
     build-packages:
-    - gcc
-    - libncurses-dev
-    - libsystemd-dev
+      - libncurses-dev
+      - libudev-dev
+      - libsystemd-dev
+      - libdrm-dev
+      - pkg-config
+      - build-essential
     stage-packages:
-    - libncurses6
-    - libncursesw6
-    - libsystemd0
-    prime:
-    - -usr/share/doc
+      - libncurses6
+      - libudev1
+      - libsystemd0
+      - libdrm2
+      - libdrm-amdgpu1

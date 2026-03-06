@@ -493,6 +493,23 @@ static void draw_percentage_meter(WINDOW *win, const char *prelude, unsigned int
   wnoutrefresh(win);
 }
 
+// Draw percentage with a yellow highlight percentage (yellow percentage <= new_percentage)
+static void draw_percentage_meter_with_yellow_highlight(WINDOW *win, const char *prelude, unsigned int new_percentage,
+                                                        unsigned int yellow_percentage,
+                                                        const char inside_braces_right[1024]) {
+  draw_percentage_meter(win, prelude, new_percentage, inside_braces_right);
+  if (yellow_percentage > new_percentage)
+    yellow_percentage = new_percentage;
+  int rows, cols;
+  getmaxyx(win, rows, cols);
+  (void)rows;
+  size_t size_prelude = strlen(prelude);
+  int between_sbraces = cols - size_prelude - 2;
+  float usage = round((float)between_sbraces * yellow_percentage / 100.f);
+  mvwchgat(win, 0, size_prelude + 1, (int)usage, 0, yellow_color, NULL);
+  wnoutrefresh(win);
+}
+
 static const char *memory_prefix[] = {" B", "Ki", "Mi", "Gi", "Ti", "Pi"};
 
 static void draw_temp_color(WINDOW *win, const char *label, unsigned int temp, unsigned int temp_slowdown,
@@ -697,8 +714,15 @@ static void draw_devices(struct list_head *devices, struct nvtop_interface *inte
         draw_percentage_meter(decode_win, "DEC", rate, buff);
     }
     if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, gpu_util_rate)) {
-      snprintf(buff, 1024, "%u%%", device->dynamic_info.gpu_util_rate);
-      draw_percentage_meter(gpu_util_win, "GPU", device->dynamic_info.gpu_util_rate, buff);
+      if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, effective_load_rate)) {
+        snprintf(buff, 1024, "%u%%(eff %u%%)", device->dynamic_info.gpu_util_rate,
+                 device->dynamic_info.effective_load_rate);
+        draw_percentage_meter_with_yellow_highlight(gpu_util_win, "GPU", device->dynamic_info.gpu_util_rate,
+                                                    device->dynamic_info.effective_load_rate, buff);
+      } else {
+        snprintf(buff, 1024, "%u%%", device->dynamic_info.gpu_util_rate);
+        draw_percentage_meter(gpu_util_win, "GPU", device->dynamic_info.gpu_util_rate, buff);
+      }
     } else {
       snprintf(buff, 1024, "N/A");
       draw_percentage_meter(gpu_util_win, "GPU", 0, buff);
