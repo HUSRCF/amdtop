@@ -401,13 +401,10 @@ static void initDeviceSysfsPaths(struct gpu_info_amdgpu *gpu_info) {
 #define VENDOR_AMD 0x1002
 
 static bool gpuinfo_amdgpu_get_device_handles(struct list_head *devices, unsigned *count) {
-  if (!libdrm_handle) {
-    fprintf(stderr, "DEBUG: libdrm_handle is NULL\n");
+  if (!libdrm_handle)
     return false;
-  }
 
   last_libdrm_return_status = wrap_drmGetDevices(NULL, 0);
-  fprintf(stderr, "DEBUG: drmGetDevices returned %d devices\n", last_libdrm_return_status);
   if (last_libdrm_return_status <= 0)
     return false;
 
@@ -463,7 +460,6 @@ static bool gpuinfo_amdgpu_get_device_handles(struct list_head *devices, unsigne
 
     if (is_amdgpu) {
       if (!libdrm_amdgpu_handle || !_amdgpu_device_initialize) {
-        fprintf(stderr, "DEBUG: libdrm_amdgpu_handle or _amdgpu_device_initialize is NULL\n");
         _drmFreeVersion(ver);
         close(fd);
         continue;
@@ -472,7 +468,6 @@ static bool gpuinfo_amdgpu_get_device_handles(struct list_head *devices, unsigne
       uint32_t drm_major, drm_minor;
       last_libdrm_return_status =
           _amdgpu_device_initialize(fd, &drm_major, &drm_minor, &gpu_infos[amdgpu_count].amdgpu_device);
-      fprintf(stderr, "DEBUG: amdgpu_device_initialize returned: %d (0=success)\n", last_libdrm_return_status);
     } else {
       // TODO: radeon suppport here
       assert(false);

@@ -19,7 +19,7 @@ issues: https://github.com/HUSRCF/amdtop/issues
 donation: https://github.com/HUSRCF/amdtop
 
 grade: stable
-confinement: strict
+confinement: classic
 
 apps:
   amdtop:
