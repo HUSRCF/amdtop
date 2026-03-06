@@ -37,6 +37,7 @@ parts:
   amdtop:
     plugin: cmake
     source: .
+    source-type: local
     # 强制指定安装路径为 /usr (确保文件一定在 usr/bin 下)
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
