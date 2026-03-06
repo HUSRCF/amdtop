@@ -19,12 +19,14 @@ issues: https://github.com/HUSRCF/amdtop/issues
 donation: https://github.com/HUSRCF/amdtop
 
 grade: stable
-confinement: strict
+confinement: classic
 
 apps:
   amdtop:
     # --- 关键修改：从 bin/amdtop 改为 usr/bin/amdtop ---
     command: usr/bin/amdtop
+    environment:
+      LD_LIBRARY_PATH: $SNAP/usr/lib:$SNAP/usr/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
     plugs:
       - system-observe
       - hardware-observe
@@ -46,6 +48,7 @@ parts:
       - -DINTEL_SUPPORT=ON
       - -DROCM_SMI_SUPPORT=ON
     build-packages:
+      - patchelf
       - libncurses-dev
       - libudev-dev
       - libsystemd-dev
@@ -58,3 +61,10 @@ parts:
       - libsystemd0
       - libdrm2
       - libdrm-amdgpu1
+    override-build: |
+      craftctl default
+      # 复制 ROCm SMI 库到 snap 包中
+      if [ -f /opt/rocm/lib/librocm_smi64.so.1 ]; then
+        mkdir -p $CRAFT_PART_INSTALL/usr/lib
+        cp -P /opt/rocm/lib/librocm_smi64.so* $CRAFT_PART_INSTALL/usr/lib/ || true
+      fi

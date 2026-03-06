@@ -29,6 +29,10 @@
 #include "nvtop/time.h"
 #include "nvtop/rocm_smi_utils.h"
 
+#ifdef HAVE_ROCM_SMI
+#include <rocm_smi/rocm_smi.h>
+#endif
+
 #include <assert.h>
 #include <dirent.h>
 #include <dlfcn.h>
@@ -498,7 +502,7 @@ static bool gpuinfo_amdgpu_get_device_handles(struct list_head *devices, unsigne
       gpu_infos[amdgpu_count].lspci_pcie_width = 0;
       gpu_infos[amdgpu_count].last_lspci_update = (nvtop_time){0, 0};
       list_add_tail(&gpu_infos[amdgpu_count].base.list, devices);
-      // Register a fdinfo callback for this GPU
+      // Register a fdinfo callback for this GPU (Scanner Layer)
       processinfo_register_fdinfo_callback(parse_drm_fdinfo_amd, &gpu_infos[amdgpu_count].base);
       amdgpu_count++;
     } else {
@@ -1163,24 +1167,53 @@ static void swap_process_cache_for_next_update(struct gpu_info_amdgpu *gpu_info)
 static void gpuinfo_amdgpu_get_running_processes(struct gpu_info *_gpu_info) {
   struct gpu_info_amdgpu *gpu_info = container_of(_gpu_info, struct gpu_info_amdgpu, base);
 
-  // 优先使用 ROCm SMI 获取进程信息
+  // 扫描层：使用 fdinfo 获取所有 GPU 进程（包括图形和计算）
+  swap_process_cache_for_next_update(gpu_info);
+
+  // 增强层：使用 ROCm SMI 增强计算进程的数据
   #ifdef HAVE_ROCM_SMI
-  fprintf(stderr, "DEBUG: rsmi_available=%d, nvtop_rocm_smi_is_available()=%d\n",
-          gpu_info->rsmi_available, nvtop_rocm_smi_is_available());
   if (gpu_info->rsmi_available && nvtop_rocm_smi_is_available()) {
-    fprintf(stderr, "DEBUG: Calling nvtop_rocm_smi_get_processes\n");
-    if (nvtop_rocm_smi_get_processes(&gpu_info->base)) {
-      fprintf(stderr, "DEBUG: ROCm SMI get_processes succeeded\n");
-      // ROCm SMI 成功获取进程信息
-      return;
+    // 获取 ROCm SMI 进程列表
+    uint32_t num_items = 0;
+    rsmi_status_t status = rsmi_compute_process_info_get(NULL, &num_items);
+
+    if (status == RSMI_STATUS_SUCCESS && num_items > 0) {
+      rsmi_process_info_t *procs = calloc(num_items, sizeof(rsmi_process_info_t));
+      if (procs) {
+        status = rsmi_compute_process_info_get(procs, &num_items);
+
+        if (status == RSMI_STATUS_SUCCESS) {
+          // 遍历 ROCm SMI 进程，增强 fdinfo 数据
+          for (uint32_t i = 0; i < num_items; ++i) {
+            pid_t rocm_pid = procs[i].process_id;
+
+            // 在 fdinfo 扫描的进程中查找匹配的 PID
+            for (unsigned j = 0; j < gpu_info->base.processes_count; ++j) {
+              struct gpu_process *proc = &gpu_info->base.processes[j];
+
+              if (proc->pid == rocm_pid) {
+                // 找到匹配的进程，用 ROCm SMI 的高精度数据增强
+                proc->type = gpu_process_compute;
+
+                // 用 ROCm SMI 的显存数据覆盖（更准确）
+                if (procs[i].vram_usage > 0) {
+                  SET_GPUINFO_PROCESS(proc, gpu_memory_usage, procs[i].vram_usage);
+                }
+
+                // 添加 CU 占用率（fdinfo 没有这个数据）
+                if (procs[i].cu_occupancy != 0xFFFFFFFF) {
+                  SET_GPUINFO_PROCESS(proc, gpu_usage, procs[i].cu_occupancy);
+                }
+
+                break;
+              }
+            }
+          }
+        }
+
+        free(procs);
+      }
     }
-    fprintf(stderr, "DEBUG: ROCm SMI get_processes failed, falling back to fdinfo\n");
   }
   #endif
-
-  // 回退到 fdinfo 方式（保持兼容性）
-  // For AMDGPU, we register a fdinfo callback that will fill the gpu_process datastructure of the gpu_info structure
-  // for us. This avoids going through /proc multiple times per update for multiple GPUs.
-  fprintf(stderr, "DEBUG: Using fdinfo fallback\n");
-  swap_process_cache_for_next_update(gpu_info);
 }

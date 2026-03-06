@@ -23,7 +23,7 @@ bool nvtop_rocm_smi_init(void) {
   if (rsmi_ready)
     return true;
 
-  rsmi_status_t status = rsmi_init(RSMI_INIT_FLAG_THRAD_ONLY_MUTEX);
+  rsmi_status_t status = rsmi_init(0);
   if (status != RSMI_STATUS_SUCCESS)
     return false;
 
@@ -73,37 +73,30 @@ bool nvtop_rocm_smi_device_name(uint32_t index, char *name, size_t name_len) {
   if (!rsmi_ready || !name || name_len == 0)
     return false;
 
-  name[0] = '\0';
-  rsmi_status_t status = rsmi_dev_market_name_get(index, name, name_len);
-  if (status != RSMI_STATUS_SUCCESS || name[0] == '\0') {
-    status = rsmi_dev_name_get(index, name, name_len);
+  // 使用更大的临时缓冲区防止溢出
+  char temp_name[256];
+  memset(temp_name, 0, sizeof(temp_name));
+
+  rsmi_status_t status = rsmi_dev_name_get(index, temp_name, sizeof(temp_name) - 1);
+
+  if (status == RSMI_STATUS_SUCCESS && temp_name[0] != '\0') {
+    strncpy(name, temp_name, name_len - 1);
+    name[name_len - 1] = '\0';
+    return true;
   }
 
-  return (status == RSMI_STATUS_SUCCESS && name[0] != '\0');
+  name[0] = '\0';
+  return false;
 }
 
 static bool rsmi_get_clock_mhz(uint32_t index, rsmi_clk_type_t type, unsigned int *current, unsigned int *max) {
-  rsmi_frequencies_t freqs;
-  rsmi_status_t status = rsmi_dev_gpu_clk_freq_get(index, type, &freqs);
-  if (status != RSMI_STATUS_SUCCESS || freqs.num_supported == 0)
-    return false;
-
-  uint64_t max_freq = 0;
-  for (uint32_t i = 0; i < freqs.num_supported; ++i) {
-    if (freqs.frequency[i] > max_freq)
-      max_freq = freqs.frequency[i];
-  }
-
-  if (max && max_freq > 0)
-    *max = (unsigned int)(max_freq / 1000000ULL);
-
-  if (current && freqs.current < freqs.num_supported) {
-    uint64_t cur = freqs.frequency[freqs.current];
-    if (cur > 0)
-      *current = (unsigned int)(cur / 1000000ULL);
-  }
-
-  return true;
+  // 暂时禁用时钟频率读取，因为 rsmi_dev_gpu_clk_freq_get 可能导致栈溢出
+  // 这可能是由于 ROCm SMI 库版本与头文件不匹配导致的
+  (void)index;
+  (void)type;
+  (void)current;
+  (void)max;
+  return false;
 }
 
 void nvtop_rocm_smi_refresh_dynamic(uint32_t index, struct gpuinfo_dynamic_info *dynamic_info) {
@@ -182,11 +175,9 @@ void nvtop_rocm_smi_refresh_dynamic(uint32_t index, struct gpuinfo_dynamic_info 
     SET_GPUINFO_DYNAMIC(dynamic_info, fan_rpm, (unsigned int)fan_rpm);
   }
 
+  // Get power draw (try different APIs for compatibility)
   uint64_t power = 0;
-  RSMI_POWER_TYPE power_type = RSMI_INVALID_POWER;
-  if (rsmi_dev_power_get(index, &power, &power_type) == RSMI_STATUS_SUCCESS) {
-    SET_GPUINFO_DYNAMIC(dynamic_info, power_draw, (unsigned int)(power / 1000));
-  } else if (rsmi_dev_power_ave_get(index, 0, &power) == RSMI_STATUS_SUCCESS) {
+  if (rsmi_dev_power_ave_get(index, 0, &power) == RSMI_STATUS_SUCCESS) {
     SET_GPUINFO_DYNAMIC(dynamic_info, power_draw, (unsigned int)(power / 1000));
   }
 
@@ -195,6 +186,9 @@ void nvtop_rocm_smi_refresh_dynamic(uint32_t index, struct gpuinfo_dynamic_info 
     SET_GPUINFO_DYNAMIC(dynamic_info, power_draw_max, (unsigned int)(cap / 1000));
   }
 
+  // Note: GPU metrics API may not be available in all ROCm versions
+  // Commented out to maintain compatibility
+  /*
   metrics_table_header_t header;
   if (rsmi_dev_metrics_header_info_get(index, &header) == RSMI_STATUS_SUCCESS) {
     rsmi_gpu_metrics_t metrics;
@@ -211,16 +205,12 @@ void nvtop_rocm_smi_refresh_dynamic(uint32_t index, struct gpuinfo_dynamic_info 
 
       if (!GPUINFO_DYNAMIC_FIELD_VALID(dynamic_info, pcie_rx) ||
           !GPUINFO_DYNAMIC_FIELD_VALID(dynamic_info, pcie_tx)) {
-        if (metrics.pcie_bandwidth_inst != UINT64_MAX) {
-          double total_kib = ((double)metrics.pcie_bandwidth_inst / 8.0) * 1024.0;
-          unsigned int half = (unsigned int)llround(total_kib / 2.0);
-          unsigned int rest = (unsigned int)llround(total_kib) - half;
-          SET_GPUINFO_DYNAMIC(dynamic_info, pcie_rx, half);
-          SET_GPUINFO_DYNAMIC(dynamic_info, pcie_tx, rest);
-        }
+        // Note: pcie_bandwidth_inst may not be available in all ROCm versions
+        // Commented out to maintain compatibility
       }
     }
   }
+  */
 
   uint64_t sent = 0, received = 0, max_pkt = 0;
   if (rsmi_dev_pci_throughput_get(index, &sent, &received, &max_pkt) == RSMI_STATUS_SUCCESS) {
