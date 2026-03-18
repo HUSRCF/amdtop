@@ -412,12 +412,12 @@ static void initialize_colors(void) {
 #else
   background_color = COLOR_BLACK;
 #endif
+  init_pair(blue_color, COLOR_BLUE, background_color);
+  init_pair(yellow_color, COLOR_YELLOW, background_color);
+  init_pair(green_color, COLOR_GREEN, background_color);
+  init_pair(magenta_color, COLOR_MAGENTA, background_color);
   init_pair(cyan_color, COLOR_CYAN, background_color);
   init_pair(red_color, COLOR_RED, background_color);
-  init_pair(green_color, COLOR_GREEN, background_color);
-  init_pair(yellow_color, COLOR_YELLOW, background_color);
-  init_pair(blue_color, COLOR_BLUE, background_color);
-  init_pair(magenta_color, COLOR_MAGENTA, background_color);
 }
 
 struct nvtop_interface *initialize_curses(unsigned total_devices, unsigned devices_count, unsigned largest_device_name,
@@ -1720,6 +1720,16 @@ void save_current_data_to_ring(struct list_head *devices, struct nvtop_interface
             data_val = device->dynamic_info.mem_clock_speed * 100 / device->dynamic_info.mem_clock_speed_max;
           }
           break;
+        case plot_gpu_eff_rate:
+          if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, effective_load_rate))
+            data_val = device->dynamic_info.effective_load_rate;
+          break;
+        case plot_gpu_freq_rate:
+          if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, gpu_clock_speed) &&
+              GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, gpu_clock_speed_max)) {
+            data_val = device->dynamic_info.gpu_clock_speed * 100 / device->dynamic_info.gpu_clock_speed_max;
+          }
+          break;
         case plot_information_count:
           break;
         }
@@ -1785,6 +1795,12 @@ static unsigned populate_plot_data_from_ring_buffer(const struct nvtop_interface
           break;
         case plot_gpu_mem_clock_rate:
           snprintf(plot_legend[in_processing], PLOT_MAX_LEGEND_SIZE, "GPU%u mem clock%%", dev_id);
+          break;
+        case plot_gpu_eff_rate:
+          snprintf(plot_legend[in_processing], PLOT_MAX_LEGEND_SIZE, "GPU%u eff%%", dev_id);
+          break;
+        case plot_gpu_freq_rate:
+          snprintf(plot_legend[in_processing], PLOT_MAX_LEGEND_SIZE, "GPU%u freq%%", dev_id);
           break;
         case plot_information_count:
           break;

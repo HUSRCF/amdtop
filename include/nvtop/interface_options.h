@@ -77,7 +77,9 @@ inline plot_info_to_draw plot_remove_draw_info(enum plot_information reset_info,
   return to_draw & (~(1 << reset_info));
 }
 
-inline plot_info_to_draw plot_default_draw_info(void) { return (1 << plot_gpu_rate) | (1 << plot_gpu_mem_rate); }
+inline plot_info_to_draw plot_default_draw_info(void) {
+  return (1 << plot_gpu_rate) | (1 << plot_gpu_mem_rate) | (1 << plot_gpu_eff_rate) | (1 << plot_gpu_freq_rate);
+}
 
 void alloc_interface_options_internals(char *config_file_location, unsigned num_devices, struct list_head *devices,
                                        nvtop_interface_option *options);

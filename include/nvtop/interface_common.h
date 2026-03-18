@@ -32,6 +32,8 @@ enum plot_information {
   plot_fan_speed,
   plot_gpu_clock_rate,
   plot_gpu_mem_clock_rate,
+  plot_gpu_eff_rate,
+  plot_gpu_freq_rate,
   plot_information_count
 };
 

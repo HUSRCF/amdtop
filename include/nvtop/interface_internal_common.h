@@ -41,12 +41,12 @@ enum nvtop_option_window_state {
 };
 
 enum interface_color {
-  cyan_color = 1,
+  blue_color = 1,
   yellow_color,
-  magenta_color,
   green_color,
+  magenta_color,
+  cyan_color,
   red_color,
-  blue_color,
 };
 
 struct device_window {
