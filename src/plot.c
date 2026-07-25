@@ -33,8 +33,7 @@ static inline int data_level(double rows, double data, double increment) {
 }
 
 void nvtop_line_plot(WINDOW *win, size_t num_data, const double *data, unsigned num_lines, bool legend_left,
-                     char legend[MAX_LINES_PER_PLOT][PLOT_MAX_LEGEND_SIZE],
-                     const bool highlight[MAX_LINES_PER_PLOT]) {
+                     char legend[MAX_LINES_PER_PLOT][PLOT_MAX_LEGEND_SIZE]) {
   if (num_data == 0)
     return;
   int rows, cols;
@@ -103,19 +102,12 @@ void nvtop_line_plot(WINDOW *win, size_t num_data, const double *data, unsigned 
           }
         }
       }
-      if (highlight[k]) {
-        wattron(win, A_BOLD);
-        mvwaddch(win, lvl_now_k, i + k, ACS_DIAMOND);
-        wattroff(win, A_BOLD);
-      }
       lvl_before[k] = lvl_now_k;
     }
   }
   int plot_y_position = 0;
   for (unsigned i = 0; i < num_lines && plot_y_position < rows; ++i) {
     wcolor_set(win, i + 1, NULL);
-    if (highlight[i])
-      wattron(win, A_BOLD);
     if (legend_left) {
       mvwprintw(win, plot_y_position, 0, "%.*s", cols, legend[i]);
     } else {
@@ -126,8 +118,6 @@ void nvtop_line_plot(WINDOW *win, size_t num_data, const double *data, unsigned 
         mvwprintw(win, plot_y_position, 0, "%.*s", (int)(length - cols), legend[i]);
       }
     }
-    if (highlight[i])
-      wattroff(win, A_BOLD);
     plot_y_position++;
   }
 }
