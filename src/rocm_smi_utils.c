@@ -182,7 +182,11 @@ void nvtop_rocm_smi_refresh_dynamic(uint32_t index, struct gpuinfo_dynamic_info 
   }
 
   uint64_t cap = 0;
-  if (rsmi_dev_power_cap_get(index, 0, &cap) == RSMI_STATUS_SUCCESS) {
+  if (rsmi_dev_power_cap_get(index, 0, &cap) != RSMI_STATUS_SUCCESS || cap == 0) {
+    cap = 0;
+    (void)rsmi_dev_power_cap_default_get(index, &cap);
+  }
+  if (cap > 0) {
     SET_GPUINFO_DYNAMIC(dynamic_info, power_draw_max, (unsigned int)(cap / 1000));
   }
 

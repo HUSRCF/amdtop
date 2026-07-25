@@ -128,6 +128,7 @@ struct gpu_info_amdgpu {
   FILE *fanSpeedFILE; // FILE* for this device current fan speed
   FILE *PCIeBW;       // FILE* for this device PCIe bandwidth over one second
   FILE *powerCap;     // FILE* for this device power cap
+  unsigned powerCapDefault; // Default power cap in microwatts
 
   nvtop_device *amdgpuDevice; // The AMDGPU driver device
   nvtop_device *hwmonDevice;  // The AMDGPU driver hwmon device
@@ -346,6 +347,7 @@ static void initDeviceSysfsPaths(struct gpu_info_amdgpu *gpu_info) {
   assert(gpu_info->amdgpuDevice != NULL);
 
   gpu_info->hwmonDevice = nvtop_device_get_hwmon(gpu_info->amdgpuDevice);
+  gpu_info->powerCapDefault = 0;
   if (gpu_info->hwmonDevice) {
     // Open the device hwmon folder (Fan speed are available there)
     const char *hwmonPath;
@@ -383,10 +385,18 @@ static void initDeviceSysfsPaths(struct gpu_info_amdgpu *gpu_info) {
       }
     }
     // Open the power cap file for dynamic info gathering
+    unsigned powerCapDefault;
+    NreadPatterns =
+        readAttributeFromDevice(gpu_info->hwmonDevice, "power1_cap_default", "%u", &powerCapDefault);
+    if (NreadPatterns == 1)
+      gpu_info->powerCapDefault = powerCapDefault;
+
     gpu_info->powerCap = NULL;
     int powerCapFD = openat(hwmonFD, "power1_cap", O_RDONLY);
-    if (powerCapFD) {
+    if (powerCapFD >= 0) {
       gpu_info->powerCap = fdopen(powerCapFD, "r");
+      if (!gpu_info->powerCap)
+        close(powerCapFD);
     }
     close(hwmonFD);
   }
@@ -913,14 +923,17 @@ static void gpuinfo_amdgpu_refresh_dynamic_info(struct gpu_info *_gpu_info) {
     }
   }
 
+  unsigned powerCap = 0;
   if (gpu_info->powerCap) {
     // The power cap in microwatts
-    unsigned powerCap;
     int NreadPatterns = rewindAndReadPattern(gpu_info->powerCap, "%u", &powerCap);
-    if (NreadPatterns == 1) {
-      SET_GPUINFO_DYNAMIC(dynamic_info, power_draw_max, powerCap / 1000);
-    }
+    if (NreadPatterns != 1)
+      powerCap = 0;
   }
+  if (powerCap == 0)
+    powerCap = gpu_info->powerCapDefault;
+  if (powerCap > 0)
+    SET_GPUINFO_DYNAMIC(dynamic_info, power_draw_max, powerCap / 1000);
 
   #ifdef HAVE_ROCM_SMI
   if (gpu_info->rsmi_available && gpu_info->rsmi_dev_index >= 0) {
