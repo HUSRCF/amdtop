@@ -1745,9 +1745,11 @@ void save_current_data_to_ring(struct list_head *devices, struct nvtop_interface
 static unsigned populate_plot_data_from_ring_buffer(const struct nvtop_interface *interface,
                                                     struct plot_window *plot_win, unsigned size_data_buff,
                                                     double data[size_data_buff],
-                                                    char plot_legend[MAX_LINES_PER_PLOT][PLOT_MAX_LEGEND_SIZE]) {
+                                                    char plot_legend[MAX_LINES_PER_PLOT][PLOT_MAX_LEGEND_SIZE],
+                                                    bool plot_highlight[MAX_LINES_PER_PLOT]) {
 
   memset(data, 0, size_data_buff * sizeof(*data));
+  memset(plot_highlight, 0, MAX_LINES_PER_PLOT * sizeof(*plot_highlight));
   unsigned total_to_draw = 0;
   for (unsigned i = 0; i < plot_win->num_devices_to_plot; ++i) {
     unsigned dev_id = plot_win->devices_ids[i];
@@ -1767,6 +1769,7 @@ static unsigned populate_plot_data_from_ring_buffer(const struct nvtop_interface
     unsigned data_ring_index = 0;
     for (enum plot_information info = plot_gpu_rate; info < plot_information_count; ++info) {
       if (plot_isset_draw_info(info, to_draw)) {
+        plot_highlight[in_processing] = info == plot_gpu_eff_rate;
         // Populate the legend
         switch (info) {
         case plot_gpu_rate:
@@ -1831,13 +1834,15 @@ static void draw_plots(struct nvtop_interface *interface) {
     werase(interface->plots[plot_id].plot_window);
 
     char plot_legend[MAX_LINES_PER_PLOT][PLOT_MAX_LEGEND_SIZE];
+    bool plot_highlight[MAX_LINES_PER_PLOT];
 
     unsigned num_lines =
         populate_plot_data_from_ring_buffer(interface, &interface->plots[plot_id], interface->plots[plot_id].num_data,
-                                            interface->plots[plot_id].data, plot_legend);
+                                            interface->plots[plot_id].data, plot_legend, plot_highlight);
 
     nvtop_line_plot(interface->plots[plot_id].plot_window, interface->plots[plot_id].num_data,
-                    interface->plots[plot_id].data, num_lines, !interface->options.plot_left_to_right, plot_legend);
+                    interface->plots[plot_id].data, num_lines, !interface->options.plot_left_to_right, plot_legend,
+                    plot_highlight);
 
     wnoutrefresh(interface->plots[plot_id].plot_window);
   }
